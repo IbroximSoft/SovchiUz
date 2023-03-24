@@ -1,0 +1,108 @@
+<resources>
+    <string-array name="language">
+        <item>Uzbekcha</item>
+        <item>Узбекча</item>
+        <item>Русский</item>
+    </string-array>
+
+    <string-array name="Province">
+        <item>Andijon</item>
+        <item>Buxoro</item>
+        <item>Fargʻona</item>
+        <item>Jizzax</item>
+        <item>Xorazm</item>
+        <item>Namangan</item>
+        <item>Navoiy</item>
+        <item>Qashqadaryo</item>
+        <item>Qoraqalpogʻiston</item>
+        <item>Samarqand</item>
+        <item>Sirdaryo</item>
+        <item>Surxondaryo</item>
+        <item>Toshkent</item>
+        <item>Respublika</item>
+    </string-array>
+
+    <string name="app_name">SovchiUz</string>
+    <string name="next">Next</string>
+    <string name="program_condition">Dastur sharti!</string>
+    <string name="agree">Roziman</string>
+    <string name="condition_1">Ushbu dasturni tayyorlayotganda har taraflama ōyladik savob uchun bōlgandan keyin ushbu dastur ortidan gunohkor bōlishni ham xohlamaymiz!</string>
+    <string name="condition_2">Agar siz dasturimizdan fahsh yōlida foydalansangiz buning gunohi ōzingizga bōlishiga rozimisiz ?</string>
+    <string name="screen_one">Bismillahir Rohmanir Rohim</string>
+    <string name="screen_ones">Assalomu alaykum Aziz Dindoshlarim! Hayotingizda ma\'no yõqmi hayot yōllaringizda ōz juftingizni qidiryapsizmi 🤔</string>
+    <string name="screen_two">Tabasum qiling!😊</string>
+    <string name="screen_twos">Biz baxtli bõlishingizga sababchi bõlmoqchimiz, qanday qilib deysizmi?</string>
+    <string name="screen_three">SovchiUz</string>
+    <string name="screen_threes">U holda bizning dasturimizdan rõyhatdan ōting, ōz juftingizni tez va oson toping🤵👰‍♀</string>
+    <string name="screen_four">Hadis</string>
+    <string name="screen_fours">Rasululloh sollallohu alayhi va sallam aytdilar: “Oila quringlar, chunki men sizlarning kõpligingiz bilan ummatlarga maqtanaman. Nasoro rohiblariga õxshamanglar”. Bayhaqiy rivoyat qilgan.</string>
+    <string name="enter">Kirish</string>
+    <string name="number_password">Raqamingiz va parōlni kiriting</string>
+    <string name="number">Raqamingiz</string>
+    <string name="hint_number">9*0000000</string>
+    <string name="password">Parōlni kiriting</string>
+    <string name="register">Rōyhatdan ōtish</string>
+    <string name="number_password_new">Raqamingizni kiriting va yangi parōl ōylab toping</string>
+    <string name="name">Ismingiz</string>
+    <string name="password_thinking">Parōl ōylab toping</string>
+    <string name="password_again">Parōlni qayta kiriting</string>
+    <string name="number_enter">Raqamingizni kiriting</string>
+    <string name="error_again">Hatolik, qayta urinib kōring</string>
+    <string name="number_incorrect">Raqam yoki parōl notōg\'ri!</string>
+    <string name="possible_not">Joy tashlash mumkin emas!</string>
+    <string name="enter_name">Ismingizni kiriting</string>
+    <string name="password_not_suitable">Parōl mos emas, etibor bering</string>
+    <string name="success">Muvofaqiyatlik…</string>
+    <string name="there_number">Bunday raqamdan rōyhatdan ōtilgan boshqa raqam bilan kiring</string>
+    <string name="condition">Shartga rozilik bering!</string>
+    <string name="kuyovlikka_nomzod">Kuyovlikka Nomzod</string>
+    <string name="yilingizni_kiriting">Yilingizni kiriting</string>
+    <string name="yashash_joy">Yashash joyingiz tanlang…</string>
+    <string name="millatingiz">Millatingiz</string>
+    <string name="boyingiz">Bo\'yingiz</string>
+    <string name="vazningiz">Vazningiz</string>
+    <string name="sogligingiz">Sog\'ligingiz</string>
+    <string name="nechchinchi_nikohga">Nechchinchi nikohga</string>
+    <string name="ibodatdamisiz">Ibodatdamisiz</string>
+    <string name="kasbingiz">Kasbingiz</string>
+    <string name="ozingizni_shartingiz">O\'zingizni shartingiz</string>
+    <string name="yuborish">Yuborish</string>
+    <string name="kelinlikka_nomzod">Kelinlikka nomzod</string>
+    <string name="nomzodingizni_tanlang">Nomzodingizni tanlang…</string>
+    <string name="profil">Profil</string>
+    <string name="tasdiqlandi">Tasdiqlandi</string>
+    <string name="anketangiz_tekshiruvdan">Anketangiz tekshiruvdan muvaffaqiyatli o‘tdi</string>
+    <string name="otkazish">O\'tkazish</string>
+    <string name="tasdiqlanmadi">Tasdiqlanmadi</string>
+    <string name="anketangiz_tekshiruvdan_otmadi">Anketangiz tekshiruvdan muvaffaqiyatsiz o‘tdi qayta urinib ko\'ring</string>
+    <string name="toldirish">To\'ldirish</string>
+    <string name="tekshirilmoqda">Tekshirilmoqda</string>
+    <string name="anketangiz_adminga">Anketangiz adminga yuborildi tekshirilmoqda kuting…</string>
+    <string name="you_must_pay_in_full">Barchasini to\'ldirishingiz shart!</string>
+    <string name="nechinchi_turmushingiz">Nechinchi turmushingiz</string>
+    <string name="year_info">-Yil</string>
+    <string name="yashash">"Yashash joyi: "</string>
+    <string name="yili_info">"Yili: "</string>
+    <string name="millati">"Millati: "</string>
+    <string name="boyi">"Bo'yi "</string>
+    <string name="vazni">"Vazni: "</string>
+    <string name="sogligi">"Sog'ligi: "</string>
+    <string name="nikohi">"Nikohi: "</string>
+    <string name="ibodatdaligi">"Ibodatdaligi: "</string>
+    <string name="kasbi">"Kasbi: "</string>
+    <string name="nomzod_sharti">"Nomzod sharti: "</string>
+    <string name="turmushi">"Turmushi: "</string>
+    <string name="toldir_anketa">Nomzodga yozish uchun anketa to\'ldirishingiz shart.</string>
+    <string name="sizda_pul_yoq">Sizda pul miqdori yo\'q nomzodga yozish uchun pul to\'ldirishingiz kerak.</string>
+    <string name="tahrirlash">Tahrirlash</string>
+    <string name="korishlar">Ko\'rishlar</string>
+    <string name="taklif_yuborilgan">Taklif yuborilgan</string>
+    <string name="taklif_kelgan">Taklif kelgan</string>
+    <string name="yilingiz">Yilingiz:</string>
+    <string name="yashash_joyingiz">Yashash joyingiz:</string>
+    <string name="nikohingiz">Nikohingiz:</string>
+    <string name="ibodatdaligingiz">Ibodatdaligingiz:</string>
+    <string name="sizning_shartingiz">Sizning shartingiz:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

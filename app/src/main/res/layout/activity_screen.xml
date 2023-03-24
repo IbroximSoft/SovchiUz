@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screens.ScreenActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/screen_languages"
+        style="@style/LoginTextInputLayoutStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"
+        android:focusable="false"
+        app:boxBackgroundColor="@color/white"
+        tools:ignore="RelativeOverlap">
+
+        <AutoCompleteTextView
+            android:id="@+id/screen_language"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/ttfirsneue_medium"
+            android:gravity="center"
+            android:inputType="none"
+            android:padding="10dp"
+            android:text="Uzbekcha"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:ignore="LabelFor" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/screen_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        android:visibility="gone" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/screen_page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/screen_languages" />
+
+</RelativeLayout>

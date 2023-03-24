@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "749748608150",
+    "project_id": "sovchiuz-be26b",
+    "storage_bucket": "sovchiuz-be26b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:749748608150:android:0ce77ea8cc9a83f3ed76b7",
+        "android_client_info": {
+          "package_name": "uz.ibrohim.sovchiuz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "749748608150-inqqcc3j4h2gnbvkatuk67iv47mpeoek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCy3TxhyHk_917jXukNjeS_Y40ohrJzAYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "749748608150-inqqcc3j4h2gnbvkatuk67iv47mpeoek.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

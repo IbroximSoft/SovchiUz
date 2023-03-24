@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TermsActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/terms_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/arrow_back"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="170dp"
+            android:layout_height="23dp"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/ttfirsneue_medium"
+            android:gravity="center"
+            android:text="@string/program_condition"
+            android:textColor="#171618"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/ttfirsneue_medium"
+                android:text="@string/program_condition"
+                android:textColor="@color/blue"
+                android:textSize="28sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:fontFamily="@font/ttfirsneue_regular"
+                android:text="@string/condition_1"
+                android:textColor="#6C78BC"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:fontFamily="@font/ttfirsneue_regular"
+                android:text="@string/condition_2"
+                android:textColor="#6C78BC"
+                android:textSize="18sp" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/terms_checkBox"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:textColor="#6C78BC"
+                android:text="@string/agree"
+                android:padding="5dp"
+                android:layout_marginStart="10dp"
+                android:textSize="17sp"
+                app:buttonTint="@color/blue"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/ttfirsneue_medium"
+                android:shadowColor="@color/black"/>
+
+            <Button
+                android:id="@+id/terms_btnOff"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:background="@drawable/btn_button_off"
+                android:layout_marginEnd="35dp"
+                android:layout_marginStart="35dp"
+                android:text="@string/next"
+                android:layout_marginTop="25dp"
+                android:textColor="#C4000000"
+                android:fontFamily="@font/ttfirsneue_regular"
+                android:textAllCaps="false"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/terms_btnOn"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:background="@drawable/btn_button_on"
+                android:layout_marginEnd="35dp"
+                android:layout_marginStart="35dp"
+                android:visibility="gone"
+                android:text="@string/next"
+                android:layout_marginTop="25dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/ttfirsneue_regular"
+                android:textAllCaps="false"
+                android:textSize="16sp"/>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+

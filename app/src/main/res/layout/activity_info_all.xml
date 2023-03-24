@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".read_data.InfoAllActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/ic_back"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:background="@drawable/arrow_back"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/ic_summa"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignStart="@id/txt_summa"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_summa"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/txt_summa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/ttfirsneue_regular"
+            android:paddingStart="30dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:ignore="RelativeOverlap,RtlSymmetry" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/info_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

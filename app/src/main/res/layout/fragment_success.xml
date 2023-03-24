@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".more_page.profile.SuccessFragment">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/profile_success"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/ttfirsneue_medium"
+        android:gravity="center"
+        android:text="@string/tasdiqlandi"
+        android:textColor="@color/blue"
+        android:textSize="25sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/ttfirsneue_regular"
+        android:gravity="center"
+        android:text="@string/anketangiz_tekshiruvdan"
+        android:textColor="#A6000000"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btn_success"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:textAllCaps="false"
+        android:background="@drawable/btn_button_on"
+        android:textColor="@color/white"
+        android:text="@string/otkazish"
+        android:textSize="16sp"
+        android:fontFamily="@font/ttfirsneue_regular"/>
+
+</LinearLayout>
