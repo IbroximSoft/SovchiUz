@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.appuj.customizedalertdialoglib.CustomizedAlertDialog
 import com.appuj.customizedalertdialoglib.CustomizedAlertDialogCallback
 import com.google.firebase.auth.FirebaseAuth
@@ -19,9 +18,7 @@ import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
 import es.dmoral.toasty.Toasty
 import uz.ibrohim.sovchiuz.R
-import uz.ibrohim.sovchiuz.chat_page.ChatFragment
 import uz.ibrohim.sovchiuz.databinding.FragmentMaleBinding
-import uz.ibrohim.sovchiuz.more_page.profile.InformationFragment
 import uz.ibrohim.sovchiuz.more_page.profile.ProfileActivity
 import java.util.HashMap
 
@@ -32,6 +29,8 @@ class MaleFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var reference: DatabaseReference
     private lateinit var references: DatabaseReference
+    private var year:String? = null
+    private var province:String? = null
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -62,8 +61,8 @@ class MaleFragment : Fragment() {
         val ref = db.collection("all_anketa")
         ref.document(uid).get()
             .addOnSuccessListener {
-                val year = it.data?.get("year").toString() + getString(R.string.year_info)
-                val province = it.data?.get("province").toString()
+                year = it.data?.get("year").toString() + getString(R.string.year_info)
+                province = it.data?.get("province").toString()
                 val nation = it.data?.get("nation").toString()
                 val tall = it.data?.get("tall").toString() + " sm"
                 val weight = it.data?.get("weight").toString() + " kg"
@@ -84,6 +83,7 @@ class MaleFragment : Fragment() {
                 binding.txtCondition.text = getString(R.string.nomzod_sharti) + condition
                 binding.txtDate.text = it.data?.get("date").toString()
                 binding.txtTime.text = it.data?.get("time").toString()
+
             }
 
         checkFavorite(currentUserID, uid)
@@ -96,11 +96,11 @@ class MaleFragment : Fragment() {
     }
 
     private fun checkFavorite(currentUserID: String, uid: String) {
-        references.child("all_favorite").child(currentUserID)
+        references.child("all_favorite").child(currentUserID).child(uid)
             .addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.child(uid).value !=null){
-                        val id = snapshot.child(uid).value.toString()
+                    if (snapshot.child("uid").value !=null){
+                        val id = snapshot.child("uid").value.toString()
                         if (id == uid){
                             binding.favoriteImg.setBackgroundResource(R.drawable.favorite_on)
                             binding.favorite.setOnClickListener {
@@ -123,8 +123,11 @@ class MaleFragment : Fragment() {
     private fun onClickFavorite(uid: String, currentUserID: String) {
         binding.favorite.setOnClickListener {
             val dataHas = HashMap<String, String>()
-            dataHas[uid] = uid
-            references.child("all_favorite").child(currentUserID).setValue(dataHas)
+            dataHas["year"] = year.toString()
+            dataHas["province"] = province.toString()
+            dataHas["image"] = "https://firebasestorage.googleapis.com/v0/b/sovchiuz-be26b.appspot.com/o/male.png?alt=media&token=43e95474-011a-4210-8f12-1de27ee5183f"
+            dataHas["uid"] = uid
+            references.child("all_favorite").child(currentUserID).child(uid).setValue(dataHas)
                 .addOnCompleteListener{
                     binding.favoriteImg.setBackgroundResource(R.drawable.favorite_on)
                 }
