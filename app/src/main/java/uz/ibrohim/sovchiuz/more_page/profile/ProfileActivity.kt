@@ -51,5 +51,9 @@ class ProfileActivity : AppCompat() {
                     .replace(R.id.account_frame, ProfileFragment()).commit()
             }
         }
+
+        binding.accountBack.setOnClickListener {
+            onBackPressed()
+        }
     }
 }

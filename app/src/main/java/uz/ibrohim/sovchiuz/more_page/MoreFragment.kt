@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import uz.ibrohim.sovchiuz.R
 import uz.ibrohim.sovchiuz.databinding.FragmentMoreBinding
+import uz.ibrohim.sovchiuz.more_page.favorite.FavoriteActivity
 import uz.ibrohim.sovchiuz.more_page.moreAdapter.List
 import uz.ibrohim.sovchiuz.more_page.moreAdapter.MoreAdapter
 import uz.ibrohim.sovchiuz.more_page.profile.ProfileActivity
@@ -66,7 +67,7 @@ class MoreFragment : Fragment() {
                         Toast.makeText(context, "Notification", Toast.LENGTH_SHORT).show()
                     }
                     1 -> {
-                        Toast.makeText(context, "Saqlanganlar", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(requireContext(), FavoriteActivity::class.java))
                     }
                     2 -> {
                         startActivity(Intent(requireContext(), ProfileActivity::class.java))

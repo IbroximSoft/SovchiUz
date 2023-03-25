@@ -31,6 +31,7 @@ class MaleFragment : Fragment() {
     private lateinit var references: DatabaseReference
     private var year:String? = null
     private var province:String? = null
+    private var marriage:String? = null
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -67,7 +68,7 @@ class MaleFragment : Fragment() {
                 val tall = it.data?.get("tall").toString() + " sm"
                 val weight = it.data?.get("weight").toString() + " kg"
                 val health = it.data?.get("health").toString()
-                val marriage = it.data?.get("marriage").toString()
+                marriage = it.data?.get("marriage").toString()
                 val prayer = it.data?.get("prayer").toString()
                 val profession = it.data?.get("profession").toString()
                 val condition = it.data?.get("condition").toString()
@@ -125,7 +126,9 @@ class MaleFragment : Fragment() {
             val dataHas = HashMap<String, String>()
             dataHas["year"] = year.toString()
             dataHas["province"] = province.toString()
+            dataHas["marriage"] = marriage.toString()
             dataHas["image"] = "https://firebasestorage.googleapis.com/v0/b/sovchiuz-be26b.appspot.com/o/male.png?alt=media&token=43e95474-011a-4210-8f12-1de27ee5183f"
+            dataHas["gender"] = "male"
             dataHas["uid"] = uid
             references.child("all_favorite").child(currentUserID).child(uid).setValue(dataHas)
                 .addOnCompleteListener{
