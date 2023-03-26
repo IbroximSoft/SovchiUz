@@ -3,7 +3,6 @@ package uz.ibrohim.sovchiuz.more_page.favorite
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -38,7 +37,7 @@ class FavoriteActivity : AppCompatActivity() {
         val currentUserID = auth.currentUser?.uid.toString()
         dbRef = FirebaseDatabase.getInstance().getReference("all_favorite").child(currentUserID)
 
-        dbRef.addListenerForSingleValueEvent(object : ValueEventListener {
+        dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()){
                     for (userSnapshot in snapshot.children){

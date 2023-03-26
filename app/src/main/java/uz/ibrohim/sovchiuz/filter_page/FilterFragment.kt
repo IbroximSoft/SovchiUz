@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import uz.ibrohim.sovchiuz.R
 import uz.ibrohim.sovchiuz.databinding.FragmentFilterBinding
-import uz.ibrohim.sovchiuz.databinding.FragmentHomeBinding
 
 class FilterFragment : Fragment() {
 
@@ -20,6 +19,26 @@ class FilterFragment : Fragment() {
     ): View {
         _binding = FragmentFilterBinding.inflate(inflater, container, false)
 
+        maleOnClick()
+
+        binding.womanBtn.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.home_fr, FilterWFragment()).commit()
+            binding.womanBtn.setBackgroundResource(R.drawable.filter_btn)
+            binding.maleBtn.setBackgroundResource(android.R.color.transparent)
+        }
+
+        binding.maleBtn.setOnClickListener {
+            maleOnClick()
+        }
+
         return binding.root
+    }
+
+    private fun maleOnClick() {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.home_fr, FilterMFragment()).commit()
+        binding.maleBtn.setBackgroundResource(R.drawable.filter_btn)
+        binding.womanBtn.setBackgroundResource(android.R.color.transparent)
     }
 }

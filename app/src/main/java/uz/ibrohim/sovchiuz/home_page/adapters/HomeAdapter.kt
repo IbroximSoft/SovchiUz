@@ -13,7 +13,8 @@ import uz.ibrohim.sovchiuz.R
 import uz.ibrohim.sovchiuz.read_data.InfoAllActivity
 
 class HomeAdapter(
-    private val booksList: ArrayList<AnketaItems>) :
+    private val booksList: MutableList<AnketaItems>
+) :
     RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
     private lateinit var auth: FirebaseAuth
 

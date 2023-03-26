@@ -8,5 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#5871ff</color>
+    <color name="filter_color">#DCDBDB</color>
     <color name="progress_color">#850044FF</color>
 </resources>
