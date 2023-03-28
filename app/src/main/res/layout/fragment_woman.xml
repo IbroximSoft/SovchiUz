@@ -174,11 +174,11 @@
                 tools:ignore="UselessParent">
 
                 <ImageView
+                    android:id="@+id/favorite_img"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5dp"
-                    android:src="@drawable/more_favorite"
                     tools:ignore="ContentDescription" />
 
                 <TextView
@@ -204,7 +204,6 @@
                 tools:ignore="UselessParent">
 
                 <ImageView
-                    android:id="@+id/favorite_img"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_centerHorizontal="true"

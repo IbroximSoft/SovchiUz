@@ -11,9 +11,7 @@ import com.google.firebase.firestore.*
 import uz.ibrohim.sovchiuz.databinding.FragmentFilterMBinding
 import uz.ibrohim.sovchiuz.home_page.adapters.AnketaItems
 import uz.ibrohim.sovchiuz.home_page.adapters.HomeAdapter
-import java.util.*
 import kotlin.collections.ArrayList
-
 
 class FilterMFragment : Fragment() {
     private var _binding: FragmentFilterMBinding? = null
