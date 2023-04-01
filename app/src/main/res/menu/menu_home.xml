@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/first_fragment"
+        android:title="Bosh saxifa"
+        android:icon="@drawable/nav_home"/>
+
+    <item
+        android:id="@+id/third_fragment"
+        android:title="Filter"
+        android:icon="@drawable/nav_filter"/>
+
+    <item
+        android:id="@+id/fourth_fragment"
+        android:title="Chat"
+        android:icon="@drawable/nav_chat"/>
+
+    <item
+        android:id="@+id/five_fragment"
+        android:title="Qo'shimcha"
+        android:icon="@drawable/nav_more"/>
+
+</menu>

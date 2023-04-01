@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".more_page.profile.InformationFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/ttfirsneue_medium"
+        android:text="@string/nomzodingizni_tanlang"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textSize="23sp" />
+
+    <Button
+        android:id="@+id/info_male"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/btn_button_on"
+        android:fontFamily="@font/ttfirsneue_regular"
+        android:text="@string/kuyovlikka_nomzod"
+        android:textAllCaps="false"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/info_woman"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/btn_button_on"
+        android:fontFamily="@font/ttfirsneue_regular"
+        android:text="@string/kelinlikka_nomzod"
+        android:textAllCaps="false"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:id="@+id/info_question"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:background="@drawable/info_question"
+            android:backgroundTint="#69B9F8"
+            tools:ignore="ContentDescription" />
+
+    </LinearLayout>
+
+</LinearLayout>
