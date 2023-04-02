@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".more_page.profile.quest.WomanQuesActivity">
+    tools:context=".more_page.profile.edit_quest.MaleEditQuesActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -62,11 +62,9 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:ignore="LabelFor" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="67dp"
@@ -92,7 +90,6 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:ignore="Autofill,LabelFor,TextFields" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -123,7 +120,6 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:met_mask="#.##" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -154,7 +150,6 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:met_mask="##" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -183,7 +178,6 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:ignore="Autofill,LabelFor,TextFields" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -212,7 +206,6 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:ignore="Autofill,LabelFor,TextFields" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -241,7 +234,6 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:ignore="Autofill,LabelFor,TextFields" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -270,7 +262,6 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:ignore="Autofill,LabelFor,TextFields" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -299,7 +290,6 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:ignore="Autofill,LabelFor,TextFields" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -313,28 +303,25 @@
             android:text="@string/yuborish"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <LinearLayout
             android:id="@+id/linear_btn"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_margin="20dp"
-            android:visibility="gone"
             android:background="@drawable/radius_prog_woman"
-            android:gravity="center">
+            android:gravity="center"
+            android:visibility="gone">
 
             <com.clk.progress.CircularProgress
                 android:id="@+id/circularProgress"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
-
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp" />
-
     </LinearLayout>
-
 </ScrollView>

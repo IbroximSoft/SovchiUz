@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".more_page.profile.quest.WomanQuesActivity">
+    tools:context=".more_page.profile.edit_quest.MaleEditQuesActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,12 +17,12 @@
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:fontFamily="@font/ttfirsneue_medium"
-            android:text="@string/kelinlikka_nomzod"
-            android:textColor="#BE3DF4"
+            android:text="@string/kuyovlikka_nomzod"
+            android:textColor="@color/blue"
             android:textSize="22sp" />
 
         <TextView
-            android:id="@+id/woman_year"
+            android:id="@+id/male_year"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="15dp"
@@ -49,7 +49,7 @@
             tools:ignore="RelativeOverlap">
 
             <AutoCompleteTextView
-                android:id="@+id/woman_province"
+                android:id="@+id/male_province"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="5dp"
@@ -62,11 +62,9 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:ignore="LabelFor" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="67dp"
@@ -80,11 +78,11 @@
             app:boxCornerRadiusBottomStart="7dp"
             app:boxCornerRadiusTopEnd="7dp"
             app:boxCornerRadiusTopStart="7dp"
-            app:boxStrokeColor="#74650D8A"
-            app:hintTextColor="#74650D8A">
+            app:boxStrokeColor="#740D628A"
+            app:hintTextColor="#740D628A">
 
             <EditText
-                android:id="@+id/woman_nation"
+                android:id="@+id/male_nation"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/ttfirsneue_medium"
@@ -92,7 +90,6 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:ignore="Autofill,LabelFor,TextFields" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -109,11 +106,11 @@
             app:boxCornerRadiusBottomStart="7dp"
             app:boxCornerRadiusTopEnd="7dp"
             app:boxCornerRadiusTopStart="7dp"
-            app:boxStrokeColor="#74650D8A"
-            app:hintTextColor="#74650D8A">
+            app:boxStrokeColor="#740D628A"
+            app:hintTextColor="#740D628A">
 
             <com.santalu.maskedittext.MaskEditText
-                android:id="@+id/woman_tall"
+                android:id="@+id/male_tall"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
@@ -123,7 +120,6 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:met_mask="#.##" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -140,11 +136,11 @@
             app:boxCornerRadiusBottomStart="7dp"
             app:boxCornerRadiusTopEnd="7dp"
             app:boxCornerRadiusTopStart="7dp"
-            app:boxStrokeColor="#74650D8A"
-            app:hintTextColor="#74650D8A">
+            app:boxStrokeColor="#740D628A"
+            app:hintTextColor="#740D628A">
 
             <com.santalu.maskedittext.MaskEditText
-                android:id="@+id/woman_weight"
+                android:id="@+id/male_weight"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
@@ -171,11 +167,11 @@
             app:boxCornerRadiusBottomStart="7dp"
             app:boxCornerRadiusTopEnd="7dp"
             app:boxCornerRadiusTopStart="7dp"
-            app:boxStrokeColor="#74650D8A"
-            app:hintTextColor="#74650D8A">
+            app:boxStrokeColor="#740D628A"
+            app:hintTextColor="#740D628A">
 
             <EditText
-                android:id="@+id/woman_health"
+                android:id="@+id/male_health"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/ttfirsneue_medium"
@@ -193,18 +189,18 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="12dp"
-            android:hint="@string/nechinchi_turmushingiz"
+            android:hint="@string/nechchinchi_nikohga"
             android:padding="3dp"
             android:textColorHint="@color/black"
             app:boxCornerRadiusBottomEnd="7dp"
             app:boxCornerRadiusBottomStart="7dp"
             app:boxCornerRadiusTopEnd="7dp"
             app:boxCornerRadiusTopStart="7dp"
-            app:boxStrokeColor="#74650D8A"
-            app:hintTextColor="#74650D8A">
+            app:boxStrokeColor="#740D628A"
+            app:hintTextColor="#740D628A">
 
             <EditText
-                android:id="@+id/woman_marriage"
+                android:id="@+id/male_marriage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/ttfirsneue_medium"
@@ -212,7 +208,6 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:ignore="Autofill,LabelFor,TextFields" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -229,11 +224,11 @@
             app:boxCornerRadiusBottomStart="7dp"
             app:boxCornerRadiusTopEnd="7dp"
             app:boxCornerRadiusTopStart="7dp"
-            app:boxStrokeColor="#74650D8A"
-            app:hintTextColor="#74650D8A">
+            app:boxStrokeColor="#740D628A"
+            app:hintTextColor="#740D628A">
 
             <EditText
-                android:id="@+id/woman_prayer"
+                android:id="@+id/male_prayer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/ttfirsneue_medium"
@@ -241,7 +236,6 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:ignore="Autofill,LabelFor,TextFields" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -258,11 +252,11 @@
             app:boxCornerRadiusBottomStart="7dp"
             app:boxCornerRadiusTopEnd="7dp"
             app:boxCornerRadiusTopStart="7dp"
-            app:boxStrokeColor="#74650D8A"
-            app:hintTextColor="#74650D8A">
+            app:boxStrokeColor="#740D628A"
+            app:hintTextColor="#740D628A">
 
             <EditText
-                android:id="@+id/woman_profession"
+                android:id="@+id/male_profession"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/ttfirsneue_medium"
@@ -270,7 +264,6 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:ignore="Autofill,LabelFor,TextFields" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -287,11 +280,11 @@
             app:boxCornerRadiusBottomStart="7dp"
             app:boxCornerRadiusTopEnd="7dp"
             app:boxCornerRadiusTopStart="7dp"
-            app:boxStrokeColor="#74650D8A"
-            app:hintTextColor="#74650D8A">
+            app:boxStrokeColor="#740D628A"
+            app:hintTextColor="#740D628A">
 
             <EditText
-                android:id="@+id/woman_condition"
+                android:id="@+id/male_condition"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/ttfirsneue_medium"
@@ -302,39 +295,36 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/btn_on"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_margin="20dp"
-            android:background="@drawable/btn_button_woman"
+            android:background="@drawable/btn_button_on"
             android:fontFamily="@font/ttfirsneue_regular"
             android:gravity="center"
             android:text="@string/yuborish"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <LinearLayout
             android:id="@+id/linear_btn"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_margin="20dp"
-            android:visibility="gone"
-            android:background="@drawable/radius_prog_woman"
-            android:gravity="center">
+            android:background="@drawable/radius_progress"
+            android:gravity="center"
+            android:visibility="gone">
 
             <com.clk.progress.CircularProgress
                 android:id="@+id/circularProgress"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
-
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp" />
-
     </LinearLayout>
-
 </ScrollView>

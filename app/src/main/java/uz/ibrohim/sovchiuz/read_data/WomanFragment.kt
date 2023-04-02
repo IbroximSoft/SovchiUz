@@ -58,6 +58,10 @@ class WomanFragment : Fragment() {
         val uid = bundle!!.getString("uid").toString()
         val ref = db.collection("all_anketa")
 
+        if (uid == currentUserID){
+            binding.linerMale.visibility = View.GONE
+        }
+
 
         ref.document(uid).get()
             .addOnSuccessListener {

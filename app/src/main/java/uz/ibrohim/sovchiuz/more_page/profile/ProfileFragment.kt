@@ -1,6 +1,7 @@
 package uz.ibrohim.sovchiuz.more_page.profile
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,6 +12,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import uz.ibrohim.sovchiuz.R
 import uz.ibrohim.sovchiuz.databinding.FragmentProfileBinding
+import uz.ibrohim.sovchiuz.more_page.profile.edit_quest.MaleEditQuesActivity
+import uz.ibrohim.sovchiuz.more_page.profile.edit_quest.WomanEditQuesActivity
 
 class ProfileFragment : Fragment() {
 
@@ -18,6 +21,8 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
     private var db = FirebaseFirestore.getInstance()
+    private var gender: String = ""
+    private var province: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +45,7 @@ class ProfileFragment : Fragment() {
         ref.document(currentUserID).get()
             .addOnSuccessListener {
                 val year = it.data?.get("year").toString() + getString(R.string.year_info)
-                val province = it.data?.get("province").toString()
+                province = it.data?.get("province").toString()
                 val nation = it.data?.get("nation").toString()
                 val tall = it.data?.get("tall").toString() + " sm"
                 val weight = it.data?.get("weight").toString() + " kg"
@@ -49,6 +54,7 @@ class ProfileFragment : Fragment() {
                 val prayer = it.data?.get("prayer").toString()
                 val profession = it.data?.get("profession").toString()
                 val condition = it.data?.get("condition").toString()
+                gender = it.data?.get("gender").toString()
 
                 binding.year.text = year
                 binding.province.text = province
@@ -61,6 +67,21 @@ class ProfileFragment : Fragment() {
                 binding.profession.text = profession
                 binding.condition.text = condition
             }
+
+        binding.editBtn.setOnClickListener {
+            if (gender == "male") {
+                val intent = Intent(requireContext(), MaleEditQuesActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                intent.putExtra("province", province)
+                startActivity(intent)
+            } else if (gender == "woman") {
+                val intent = Intent(requireContext(), WomanEditQuesActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                intent.putExtra("province", province)
+                startActivity(intent)
+            }
+        }
+
         return binding.root
     }
 }

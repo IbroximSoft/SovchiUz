@@ -91,7 +91,7 @@ class MaleFragment : Fragment() {
         checkFavorite(currentUserID, uid)
 
         binding.chat.setOnClickListener {
-            checkNetwork(uid, currentUserID, status)
+            checkNetwork(uid, status)
         }
 
         return binding.root
@@ -141,7 +141,7 @@ class MaleFragment : Fragment() {
         }
     }
 
-    private fun checkNetwork(uid: String, currentUserID: String, status: String?): Boolean {
+    private fun checkNetwork(uid: String, status: String?): Boolean {
         val connectivityManager =
             activity?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo = connectivityManager.activeNetworkInfo

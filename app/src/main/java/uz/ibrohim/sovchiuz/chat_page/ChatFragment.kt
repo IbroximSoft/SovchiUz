@@ -30,7 +30,7 @@ class ChatFragment : Fragment(), ChatsAdapter.Click {
         val currentUserID = auth.currentUser?.uid.toString()
         adapter = ChatsAdapter(this)
 
-        binding.rvAll.layoutManager  = LinearLayoutManager(requireContext())
+        binding.rvAll.layoutManager = LinearLayoutManager(requireContext())
 
         val list: ArrayList<UserChatData> = ArrayList()
 
@@ -38,13 +38,17 @@ class ChatFragment : Fragment(), ChatsAdapter.Click {
             .equalTo("Aktiv")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
+                    if (!snapshot.exists()) {
+                        binding.rvAll.visibility = View.GONE
+                        binding.linerFavorite.visibility = View.VISIBLE
+                    }
                     list.clear()
                     for (d in snapshot.children) {
                         if (d.child("uid1").exists() and d.child("uid2").exists() and
-                            (d.child("uid1").value == currentUserID || d.child("uid2").value == currentUserID) and
+                            (d.child("uid1").value == currentUserID ||
+                                    d.child("uid2").value == currentUserID) and
                             d.child("status").exists() and d.child("chat").exists() and
-                            d.child("key").exists()
-                        ) {
+                            d.child("key").exists()) {
                             val mainMenu: UserChatData? = d.getValue(UserChatData::class.java)
                             list.add(mainMenu!!)
                         }
@@ -63,13 +67,13 @@ class ChatFragment : Fragment(), ChatsAdapter.Click {
 
     override fun click(data: UserChatData) {
         val intent = Intent()
-        intent.putExtra("chat_key",data.key)
+        intent.putExtra("chat_key", data.key)
         val currentUserID = auth.currentUser?.uid
 
-        if (currentUserID == data.uid1){
-            intent.putExtra("you_id",data.uid2)
-        }else{
-            intent.putExtra("you_id",data.uid1)
+        if (currentUserID == data.uid1) {
+            intent.putExtra("you_id", data.uid2)
+        } else {
+            intent.putExtra("you_id", data.uid1)
         }
         intent.setClass(requireContext(), PrivateChatActivity::class.java)
         startActivity(intent)

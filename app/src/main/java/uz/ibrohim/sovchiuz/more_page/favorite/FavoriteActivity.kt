@@ -49,7 +49,6 @@ class FavoriteActivity : AppCompatActivity() {
                     binding.rvAll.visibility = View.GONE
                     binding.linerFavorite.visibility = View.VISIBLE
                 }
-
             }
 
             override fun onCancelled(error: DatabaseError) {

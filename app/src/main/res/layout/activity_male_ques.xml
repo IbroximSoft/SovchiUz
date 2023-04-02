@@ -87,7 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/ttfirsneue_medium"
-                android:inputType="textCapWords"
+                android:inputType="textCapSentences"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:ignore="Autofill,LabelFor,TextFields" />
@@ -111,15 +111,17 @@
             app:boxStrokeColor="#740D628A"
             app:hintTextColor="#740D628A">
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/male_tall"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@null"
                 android:fontFamily="@font/ttfirsneue_medium"
-                android:inputType="textCapWords"
+                android:inputType="phone"
+                android:lines="1"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                tools:ignore="Autofill,LabelFor,TextFields" />
+                app:met_mask="#.##" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -140,15 +142,17 @@
             app:boxStrokeColor="#740D628A"
             app:hintTextColor="#740D628A">
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/male_weight"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@null"
                 android:fontFamily="@font/ttfirsneue_medium"
-                android:inputType="textCapWords"
+                android:inputType="phone"
+                android:lines="1"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                tools:ignore="Autofill,LabelFor,TextFields" />
+                app:met_mask="##" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -174,7 +178,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/ttfirsneue_medium"
-                android:inputType="textCapWords"
+                android:inputType="textCapSentences"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:ignore="Autofill,LabelFor,TextFields" />
@@ -203,7 +207,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/ttfirsneue_medium"
-                android:inputType="textCapWords"
+                android:inputType="textCapSentences"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:ignore="Autofill,LabelFor,TextFields" />
@@ -232,7 +236,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/ttfirsneue_medium"
-                android:inputType="textCapWords"
+                android:inputType="textCapSentences"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:ignore="Autofill,LabelFor,TextFields" />
@@ -261,7 +265,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/ttfirsneue_medium"
-                android:inputType="textCapWords"
+                android:inputType="textCapSentences"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:ignore="Autofill,LabelFor,TextFields" />
@@ -290,7 +294,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/ttfirsneue_medium"
-                android:inputType="textCapWords"
+                android:inputType="textCapSentences"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:ignore="Autofill,LabelFor,TextFields" />

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".chat_page.ChatFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -11,5 +11,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/chats_layout"/>
+
+    <LinearLayout
+        android:id="@+id/liner_favorite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/empty_icon"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/tommy_soft_regular"
+            android:text="Hech qanday maʼlumot topilmadi"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+    </LinearLayout>
 
 </LinearLayout>
