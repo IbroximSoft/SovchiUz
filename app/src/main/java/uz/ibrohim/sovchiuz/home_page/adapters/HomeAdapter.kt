@@ -51,6 +51,7 @@ class HomeAdapter(
             holder.star.visibility = View.GONE
         }
 
+        //xa
         holder.itemView.setOnClickListener {
             val intent = Intent(it.context, InfoAllActivity::class.java)
             intent.putExtra("uid", uid)

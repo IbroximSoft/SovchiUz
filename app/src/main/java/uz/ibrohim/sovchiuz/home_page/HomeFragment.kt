@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import uz.ibrohim.sovchiuz.databinding.FragmentHomeBinding
 import uz.ibrohim.sovchiuz.home_page.adapters.AnketaItems
 import uz.ibrohim.sovchiuz.home_page.adapters.HomeAdapter
+
 
 class HomeFragment : Fragment() {
 

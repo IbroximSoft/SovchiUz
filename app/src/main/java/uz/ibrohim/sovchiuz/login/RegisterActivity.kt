@@ -8,10 +8,14 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
+import android.widget.Toast
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.messaging.FirebaseMessaging
 import es.dmoral.toasty.Toasty
 import uz.ibrohim.sovchiuz.HomeActivity
 import uz.ibrohim.sovchiuz.R
@@ -24,6 +28,7 @@ class RegisterActivity : AppCompat() {
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var mAuth: FirebaseAuth
     private lateinit var reference: DatabaseReference
+    private var token: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,8 +67,10 @@ class RegisterActivity : AppCompat() {
                 if (editable.toString() != result) {
                     binding.registerName.setText(result)
                     binding.registerName.setSelection(result.length)
-                    Toasty.warning(this@RegisterActivity, getString(R.string.possible_not),
-                        Toasty.LENGTH_SHORT, true).show()
+                    Toasty.warning(
+                        this@RegisterActivity, getString(R.string.possible_not),
+                        Toasty.LENGTH_SHORT, true
+                    ).show()
                 }
             }
         })
@@ -82,8 +89,10 @@ class RegisterActivity : AppCompat() {
                 if (editable.toString() != result) {
                     binding.registerPassword.setText(result)
                     binding.registerPassword.setSelection(result.length)
-                    Toasty.warning(this@RegisterActivity, getString(R.string.possible_not),
-                        Toasty.LENGTH_SHORT, true).show()
+                    Toasty.warning(
+                        this@RegisterActivity, getString(R.string.possible_not),
+                        Toasty.LENGTH_SHORT, true
+                    ).show()
                 }
             }
         })
@@ -96,29 +105,38 @@ class RegisterActivity : AppCompat() {
         val password2: String = binding.registerPassword2.text.toString()
         val email = "$emails@sovchi.uz"
         if (TextUtils.isEmpty(name)) {
-            Toasty.warning(this@RegisterActivity, getString(R.string.enter_name),
-                Toasty.LENGTH_SHORT, true).show()
+            Toasty.warning(
+                this@RegisterActivity, getString(R.string.enter_name),
+                Toasty.LENGTH_SHORT, true
+            ).show()
             return
         }
         if (TextUtils.isEmpty(emails)) {
-            Toasty.warning(this@RegisterActivity, getString(R.string.number_enter),
-                Toasty.LENGTH_SHORT, true).show()
+            Toasty.warning(
+                this@RegisterActivity, getString(R.string.number_enter),
+                Toasty.LENGTH_SHORT, true
+            ).show()
             return
         }
         if (TextUtils.isEmpty(password)) {
-            Toasty.warning(this@RegisterActivity, getString(R.string.number_enter),
-                Toasty.LENGTH_SHORT, true).show()
+            Toasty.warning(
+                this@RegisterActivity, getString(R.string.number_enter),
+                Toasty.LENGTH_SHORT, true
+            ).show()
             return
         }
         if (TextUtils.isEmpty(password2)) {
-            Toasty.warning(this@RegisterActivity, getString(R.string.password_again),
-                Toasty.LENGTH_SHORT, true).show()
+            Toasty.warning(
+                this@RegisterActivity, getString(R.string.password_again),
+                Toasty.LENGTH_SHORT, true
+            ).show()
             return
         }
         if (password != password2) {
             Toasty.error(
                 this@RegisterActivity, getString(R.string.password_not_suitable),
-                Toasty.LENGTH_SHORT, true).show()
+                Toasty.LENGTH_SHORT, true
+            ).show()
             return
         }
 
@@ -130,32 +148,49 @@ class RegisterActivity : AppCompat() {
                 binding.linearBtn.visibility = View.GONE
                 binding.registerBtn.visibility = View.VISIBLE
                 if (task.isSuccessful) {
-                    val currentUserID = mAuth.currentUser!!.uid
-                    val dataHas = HashMap<String, String>()
-                    dataHas["name"] = name
-                    dataHas["email"] = email
-                    dataHas["password"] = password
-                    dataHas["balance"] = "0"
-                    dataHas["status"] = "no"
-                    dataHas["uid"] = currentUserID
-                    reference.child("users").child(currentUserID).setValue(dataHas)
-                        .addOnCompleteListener {
-                            Toasty.success(this@RegisterActivity, getString(R.string.success),
-                                Toasty.LENGTH_SHORT, true).show()
-                            val intent = Intent(this@RegisterActivity, HomeActivity::class.java)
-                            startActivity(intent)
-                            finish()
-                            val sharedPreferences: SharedPreferences =
-                                getSharedPreferences("user_status", Context.MODE_PRIVATE)
-                            val editor: SharedPreferences.Editor = sharedPreferences.edit()
-                            editor.apply {
-                                putString("status", "no")
-                                putString("name", name)
-                            }.apply()
-                        }
+
+                    FirebaseMessaging.getInstance().token
+                        .addOnCompleteListener(OnCompleteListener { tasks ->
+                            if (!task.isSuccessful) {
+                                Toast.makeText(this,
+                                    "Hatolik yuz berdi qayta urinib ko'ring", Toast.LENGTH_SHORT
+                                ).show()
+                                return@OnCompleteListener
+                            }
+                            token = tasks.result
+                            val currentUserID = mAuth.currentUser!!.uid
+                            val dataHas = HashMap<String, String>()
+                            dataHas["name"] = name
+                            dataHas["email"] = email
+                            dataHas["password"] = password
+                            dataHas["balance"] = "0"
+                            dataHas["status"] = "no"
+                            dataHas["token"] = token
+                            dataHas["uid"] = currentUserID
+                            reference.child("users").child(currentUserID).setValue(dataHas)
+                                .addOnCompleteListener {
+                                    Toasty.success(
+                                        this@RegisterActivity, getString(R.string.success),
+                                        Toasty.LENGTH_SHORT, true
+                                    ).show()
+                                    val intent = Intent(this@RegisterActivity, HomeActivity::class.java)
+                                    startActivity(intent)
+                                    finish()
+                                    val sharedPreferences: SharedPreferences =
+                                        getSharedPreferences("user_status", Context.MODE_PRIVATE)
+                                    val editor: SharedPreferences.Editor = sharedPreferences.edit()
+                                    editor.apply {
+                                        putString("status", "no")
+                                        putString("name", name)
+                                    }.apply()
+                                }
+                        })
+
                 } else {
-                    Toasty.error(this@RegisterActivity, getString(R.string.there_number),
-                        Toasty.LENGTH_SHORT, true).show()
+                    Toasty.error(
+                        this@RegisterActivity, getString(R.string.there_number),
+                        Toasty.LENGTH_SHORT, true
+                    ).show()
                 }
             }
     }

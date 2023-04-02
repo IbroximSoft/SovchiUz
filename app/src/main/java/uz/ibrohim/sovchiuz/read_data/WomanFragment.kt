@@ -19,6 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import es.dmoral.toasty.Toasty
 import uz.ibrohim.sovchiuz.R
 import uz.ibrohim.sovchiuz.databinding.FragmentWomanBinding
+import uz.ibrohim.sovchiuz.chat_page.PrivateChatActivity
 import uz.ibrohim.sovchiuz.more_page.profile.ProfileActivity
 import java.util.HashMap
 
@@ -145,11 +146,11 @@ class WomanFragment : Fragment() {
         if (networkInfo == null || !networkInfo.isConnected || !networkInfo.isAvailable) {
             Toast.makeText(requireContext(), "Intenet yo'q", Toast.LENGTH_SHORT).show()
         }
-        statusCheck(uid, currentUserID, status)
+        statusCheck(uid, status)
         return networkInfo != null && networkInfo.isConnected
     }
 
-    private fun statusCheck(uid: String, currentUserID: String, status: String?) {
+    private fun statusCheck(uid: String, status: String?) {
         when (status) {
             "no" -> {
                 val xabars = getString(R.string.toldir_anketa)
@@ -168,32 +169,12 @@ class WomanFragment : Fragment() {
             }
             "yes" -> {
                 //User oldin ushbu userga yozganmi yoki yo'q tekshirish
-                userNullCheck(uid, currentUserID)
+                userNullCheck(uid)
             }
         }
     }
 
-    private fun userNullCheck(uid: String, currentUserID: String) {
-        val refs = db.collection("user_permission")
-        refs.document(currentUserID).get()
-            .addOnSuccessListener {
-                when (it.data?.get(uid).toString()) {
-                    "null" -> {
-                        //Userda hozir balansida pul bormi yoki yo'q tekshirish
-                        userCheck(uid, currentUserID)
-                    }
-                    uid -> {
-                        Toast.makeText(requireContext(), "Bor", Toast.LENGTH_SHORT).show()
-                    }
-                    else -> {
-                        Toast.makeText(requireContext(), "Boshqa user bor", Toast.LENGTH_SHORT)
-                            .show()
-                    }
-                }
-            }
-    }
-
-    private fun userCheck(uid: String, currentUserID: String) {
+    private fun userNullCheck(uid: String) {
         reference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val balance = snapshot.child("balance").value.toString()
@@ -203,11 +184,11 @@ class WomanFragment : Fragment() {
                     dialogShow(xabar)
                 } else {
                     //Userga yozishga ruxsat berilyabdi
-                    val dataMap = hashMapOf(uid to uid)
-                    db.collection("user_permission").document(currentUserID).set(dataMap)
-                        .addOnSuccessListener {
-                            Toast.makeText(requireContext(), "Add", Toast.LENGTH_SHORT).show()
-                        }
+                    val intent =
+                        Intent(requireContext(), PrivateChatActivity::class.java)
+                    intent.putExtra("you_id", uid)
+                    Toast.makeText(requireContext(), uid, Toast.LENGTH_SHORT).show()
+                    startActivity(intent)
                 }
             }
 

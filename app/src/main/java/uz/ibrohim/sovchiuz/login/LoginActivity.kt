@@ -6,12 +6,15 @@ import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.messaging.FirebaseMessaging
 import es.dmoral.toasty.Toasty
 import uz.ibrohim.sovchiuz.HomeActivity
 import uz.ibrohim.sovchiuz.R
@@ -24,6 +27,7 @@ class LoginActivity : AppCompat() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var mAuth: FirebaseAuth
     private lateinit var reference: DatabaseReference
+    private var token: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,7 +84,21 @@ class LoginActivity : AppCompat() {
         binding.linearBtn.visibility = View.GONE
         binding.loginBtn.visibility = View.VISIBLE
         if (task.isSuccessful) {
+
             val currentUserID = mAuth.currentUser!!.uid
+            FirebaseMessaging.getInstance().token
+                .addOnCompleteListener(OnCompleteListener { tasks ->
+                    if (!task.isSuccessful) {
+                        Toast.makeText(this,
+                            "Hatolik yuz berdi qayta urinib ko'ring", Toast.LENGTH_SHORT
+                        ).show()
+                        return@OnCompleteListener
+                    }
+                    token = tasks.result
+                    reference.child("users").child(currentUserID)
+                        .child("token").setValue(token)
+                })
+
             reference.child("users").child(currentUserID).addListenerForSingleValueEvent(object :
                 ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
