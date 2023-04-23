@@ -36,7 +36,8 @@ class MoreFragment : Fragment() {
 
         val imageId = intArrayOf(
             R.drawable.more_notification, R.drawable.more_favorite,
-            R.drawable.more_account, R.drawable.more_language, R.drawable.more_about,
+            R.drawable.more_account, R.drawable.ic_happy,
+            R.drawable.more_language, R.drawable.more_about,
             R.drawable.more_privacy, R.drawable.more_logout
         )
 
@@ -44,6 +45,7 @@ class MoreFragment : Fragment() {
             "Yangiliklar",
             "Saqlangan",
             "Profil",
+            "Baxtini topganlar",
             "Til",
             "Biz haqimizda",
             "Shartlar va xavfsizlik",
@@ -73,15 +75,21 @@ class MoreFragment : Fragment() {
                         startActivity(Intent(requireContext(), ProfileActivity::class.java))
                     }
                     3 -> {
-                        Toast.makeText(context, "Til", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Baxtini topganlar", Toast.LENGTH_SHORT).show()
                     }
                     4 -> {
-                        Toast.makeText(context, "Biz haqimizda", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Til", Toast.LENGTH_SHORT).show()
+
                     }
                     5 -> {
-                        Toast.makeText(context, "Shartlar va xavfsizlik", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Biz haqimizda", Toast.LENGTH_SHORT).show()
+
                     }
                     6 -> {
+                        Toast.makeText(context, "Shartlar va xavfsizlik", Toast.LENGTH_SHORT).show()
+
+                    }
+                    7 -> {
                         Toast.makeText(context, "Chiqish", Toast.LENGTH_SHORT).show()
                     }
                 }

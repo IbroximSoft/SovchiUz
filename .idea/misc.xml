@@ -12,10 +12,17 @@
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/conner_date_backgorund.xml" value="0.1425" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/edit_background.xml" value="0.126" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/filter_btn.xml" value="0.1425" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/ic_baseline_block_24.xml" value="0.137" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/ic_baseline_done_24.xml" value="0.137" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/ic_baseline_done_all_24.xml" value="0.137" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.137" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.1425" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/ic_frame.xml" value="0.137" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/ic_star.xml" value="0.135" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/image_button.xml" value="0.127" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/left_background.xml" value="0.145" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/offline_radius.xml" value="0.137" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/online_radius.xml" value="0.137" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/quest_drawable.xml" value="0.126" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/radius_progress.xml" value="0.127" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/reght_background.xml" value="0.145" />
@@ -27,17 +34,19 @@
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_male_edit_ques.xml" value="0.2" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_male_ques.xml" value="0.2" />
-        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_private_chat.xml" value="0.2" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_photo.xml" value="0.2" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_private_chat.xml" value="0.22" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_profile.xml" value="0.22" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_screen.xml" value="0.2" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_terms.xml" value="0.2" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_woman_edit_ques.xml" value="0.2" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_woman_ques.xml" value="0.2" />
-        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/chat_item.xml" value="0.22" />
-        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/chat_layout.xml" value="0.2" />
-        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/chats_layout.xml" value="0.2" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/chat_item.xml" value="0.2" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/chat_layout.xml" value="0.22" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/chats_layout.xml" value="0.22" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/dialog_birthday.xml" value="0.19895833333333332" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/filter_item.xml" value="0.2" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/fragment_block.xml" value="0.18" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/fragment_chat.xml" value="0.22" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/fragment_favorite.xml" value="0.2" />
@@ -61,6 +70,8 @@
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/screen_item2.xml" value="0.2" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/screen_item3.xml" value="0.2" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/screen_item4.xml" value="0.2" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/toolbar.xml" value="0.19895833333333332" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/menu/chat_option.xml" value="0.19895833333333332" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/menu/menu_home.xml" value="0.22" />
       </map>
     </option>
@@ -74,7 +85,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.22" />
+        <option name="scale" value="0.2" />
       </ProjectState>
     </option>
   </component>

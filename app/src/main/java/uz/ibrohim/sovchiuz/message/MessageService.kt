@@ -13,6 +13,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.TaskStackBuilder
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import uz.ibrohim.sovchiuz.App
 import uz.ibrohim.sovchiuz.R
 import java.util.*
 
@@ -29,6 +30,7 @@ class MessageService : FirebaseMessagingService() {
         val content = data["body"]
         val id = data["key"]
         val you_id = data["to_id"]
+        if (you_id != App.shared.getRoom()) {
         Log.d("Xabar", title!!)
         val intent = Intent(remoteMessage.data["click_action"])
         intent.putExtra("chat_key", id)
@@ -63,7 +65,8 @@ class MessageService : FirebaseMessagingService() {
             notificationManager.createNotificationChannel(notificationChannel)
             notificationManager.notify(0, notificationBuilder.build())
         }
-        val notificationManager = NotificationManagerCompat.from(this)
-        notificationManager.notify(0, notificationBuilder.build())
+            val notificationManager = NotificationManagerCompat.from(this)
+            notificationManager.notify(0, notificationBuilder.build())
+        }
     }
 }

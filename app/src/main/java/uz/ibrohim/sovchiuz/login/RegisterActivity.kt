@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.messaging.FirebaseMessaging
 import es.dmoral.toasty.Toasty
+import uz.ibrohim.sovchiuz.App
 import uz.ibrohim.sovchiuz.HomeActivity
 import uz.ibrohim.sovchiuz.R
 import uz.ibrohim.sovchiuz.databinding.ActivityRegisterBinding
@@ -176,8 +177,7 @@ class RegisterActivity : AppCompat() {
                                     val intent = Intent(this@RegisterActivity, HomeActivity::class.java)
                                     startActivity(intent)
                                     finish()
-                                    val sharedPreferences: SharedPreferences =
-                                        getSharedPreferences("user_status", Context.MODE_PRIVATE)
+                                    val sharedPreferences: SharedPreferences = App.shared.sharedPreferences
                                     val editor: SharedPreferences.Editor = sharedPreferences.edit()
                                     editor.apply {
                                         putString("status", "no")

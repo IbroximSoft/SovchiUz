@@ -21,7 +21,6 @@ class HomeActivity : AppCompat() {
     private lateinit var binding: ActivityHomeBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var reference: DatabaseReference
-    private var token: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,8 +81,32 @@ class HomeActivity : AppCompat() {
                     }
                 }
 
-                override fun onCancelled(error: DatabaseError) {}
+                override fun onCancelled(error: DatabaseError) {
+
+                }
             })
+
+        val connectedRef = FirebaseDatabase.getInstance().getReference(".info/connected")
+
+        connectedRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val connected = snapshot.getValue(Boolean::class.java) ?: false
+                if (connected) {
+                    // Device is connected
+                    val userRef = FirebaseDatabase.getInstance().getReference("users").child(currentUserID)
+                    userRef.child("online").setValue(true)
+                    userRef.child("online").onDisconnect().setValue(false)
+                } else {
+                    // Device is disconnected
+                    val userRef = FirebaseDatabase.getInstance().getReference("users").child(currentUserID)
+                    userRef.child("online").setValue(false)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w("TAG222", "Listener was cancelled")
+            }
+        })
     }
 
     private fun setupSmoothBottomMenu() {

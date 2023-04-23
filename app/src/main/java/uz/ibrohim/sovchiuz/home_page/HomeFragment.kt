@@ -50,24 +50,4 @@ class HomeFragment : Fragment() {
 
         return binding.root
     }
-
-    //reference = FirebaseDatabase.getInstance().reference
-    //            val userID = FirebaseAuth.getInstance().currentUser!!.uid
-    //            reference.child("users").child(userID).child("complaint")
-    //                .runTransaction(object : Transaction.Handler {
-    //                    override fun doTransaction(currentData: MutableData): Transaction.Result {
-    //                        if (currentData.value == null) {
-    //                            currentData.value = 1
-    //                        } else {
-    //                            currentData.value = (currentData.value as Long?)!! + 1
-    //                        }
-    //                        return Transaction.success(currentData)
-    //                    }
-    //
-    //                    override fun onComplete(
-    //                        error: DatabaseError?,
-    //                        committed: Boolean,
-    //                        currentData: DataSnapshot?) {
-    //                    }
-    //                })
 }

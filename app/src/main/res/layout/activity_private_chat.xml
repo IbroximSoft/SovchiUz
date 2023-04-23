@@ -6,12 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".PrivateChatActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rec"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -21,6 +29,7 @@
         android:orientation="horizontal"
         android:padding="8dp"
         android:weightSum="10"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -31,17 +40,39 @@
             android:layout_height="wrap_content"
             android:layout_weight="10"
             android:background="@null"
+            android:fontFamily="@font/ttfirsneue_medium"
+            android:inputType="textCapSentences"
             android:hint="Xabarni yozing"
-            android:padding="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:padding="12dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/send_Image"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_frame"
+            android:backgroundTint="#1D5871FF"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/send_btn"
+            style="@style/Widget.Material3.Button.IconButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="#1D5871FF"
             app:icon="@drawable/ic_baseline_send_24" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/send_btnOff"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="#1D5871FF"
+            app:icon="@drawable/ic_baseline_send_24"
+            app:iconTint="#3E000000"/>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

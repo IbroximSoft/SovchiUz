@@ -20,7 +20,8 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -65,6 +66,7 @@ dependencies {
 
     //Progress
     implementation 'com.github.colakcode:clkProgress:v1.0'
+    implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
 
     //Button Navigation
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
@@ -81,6 +83,7 @@ dependencies {
 
     //Progress
     implementation 'com.bio-matic:gaugeprogressview:1.1.2'
+    implementation 'com.github.krtkush:LinearTimer:v2.1.1'
 
     //Circle
     implementation 'de.hdodenhof:circleimageview:3.1.0'
@@ -99,4 +102,8 @@ dependencies {
 
     //EditText
     implementation 'com.github.santalu:mask-edittext:1.0.2'
+    implementation 'com.github.TutorialsAndroid:SEmojis:v0.3'
+
+    //Image Compress
+    implementation 'id.zelory:compressor:2.1.1'
 }

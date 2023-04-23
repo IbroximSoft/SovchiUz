@@ -46,7 +46,7 @@
 
                 <ImageView
                     android:id="@+id/u1_photo"
-                    android:layout_width="match_parent"
+                    android:layout_width="150dp"
                     android:layout_height="240dp"
                     android:minWidth="250dp"
                     android:scaleType="centerCrop"
@@ -96,7 +96,7 @@
 
                 <ImageView
                     android:id="@+id/u2_photo"
-                    android:layout_width="match_parent"
+                    android:layout_width="150dp"
                     android:layout_height="240dp"
                     android:minWidth="250dp"
                     android:scaleType="centerCrop"

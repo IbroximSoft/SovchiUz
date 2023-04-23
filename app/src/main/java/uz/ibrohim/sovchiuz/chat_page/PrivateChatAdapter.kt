@@ -1,11 +1,13 @@
 package uz.ibrohim.sovchiuz.chat_page
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import uz.ibrohim.sovchiuz.databinding.ChatLayoutBinding
 import java.text.SimpleDateFormat
 import java.util.*
@@ -19,7 +21,6 @@ class PrivateChatAdapter:RecyclerView.Adapter<PrivateChatAdapter.Holder>() {
         notifyDataSetChanged()
     }
 
-
     class Holder(val item: ChatLayoutBinding):RecyclerView.ViewHolder(item.root){
         private lateinit var auth: FirebaseAuth
 
@@ -32,10 +33,13 @@ class PrivateChatAdapter:RecyclerView.Adapter<PrivateChatAdapter.Holder>() {
                 if (data.type == "photo"){
                     item.u2Text.visibility = View.GONE
                     item.u2Photo.visibility = View.VISIBLE
-                    Glide.with(itemView.context)
-                        .load(data.image_url)
-                        .override(10,10)
-                        .into(item.u2Photo)
+//                    Glide.with(itemView.context)
+//                        .load(data.image_url)
+//                        .override(10,10)
+//                        .into(item.u2Photo)
+
+                    //ovozim boryabdimi ?
+
                 }else{
                     item.u2Text.visibility = View.VISIBLE
                     item.u2Photo.visibility = View.GONE
@@ -44,16 +48,17 @@ class PrivateChatAdapter:RecyclerView.Adapter<PrivateChatAdapter.Holder>() {
 
                 item.u2Date.text = convertLongToTime(data.time.toLong())
 
+                //Icon yo'q bo'lib qolibdimi ?
             }else{
                 item.u1Layout.visibility = View.VISIBLE
                 item.u2Layout.visibility = View.GONE
                 if (data.type == "photo"){
                     item.u1Text.visibility = View.GONE
                     item.u1Photo.visibility = View.VISIBLE
-                    Glide.with(itemView.context)
-                        .load(data.image_url)
-                        .override(10,10)
-                        .into(item.u1Photo)
+//                    Glide.with(itemView.context)
+//                        .load(data.image_url)
+//                        .override(10,10)
+//                        .into(item.u1Photo)
                 }else{
                     item.u1Text.visibility = View.VISIBLE
                     item.u1Photo.visibility = View.GONE
@@ -62,6 +67,31 @@ class PrivateChatAdapter:RecyclerView.Adapter<PrivateChatAdapter.Holder>() {
 
                 item.u1Date.text = convertLongToTime(data.time.toLong())
             }
+            if(data.user_id != currentUserID) {
+                if (!data.reading) {
+                    val updates = HashMap<String, Any>()
+                    updates["reading"] = true
+                    FirebaseDatabase.getInstance().getReference("Chat")
+                        .child(data.chat_key).child("chat").child(data.id).updateChildren(updates)
+                }
+            }
+            item.u2Photo.setOnClickListener {
+                val intent = Intent()
+                intent.putExtra("img",data.image_url)
+                intent.setClass(itemView.context, PhotoActivity::class.java) //Xaxaxa startActivt
+                itemView.context.startActivity(intent)
+            }
+
+            item.u1Photo.setOnClickListener {
+                val intent = Intent()
+                intent.putExtra("img",data.image_url)
+                intent.putExtra("user",true)
+                intent.putExtra("id",data.id)
+                intent.putExtra("room",data.chat_key)
+                intent.setClass(itemView.context,PhotoActivity::class.java)
+                itemView.context.startActivity(intent)
+            }
+
         }
 
         fun convertLongToTime(time: Long): String {

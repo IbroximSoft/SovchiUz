@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.messaging.FirebaseMessaging
 import es.dmoral.toasty.Toasty
+import uz.ibrohim.sovchiuz.App
 import uz.ibrohim.sovchiuz.HomeActivity
 import uz.ibrohim.sovchiuz.R
 import uz.ibrohim.sovchiuz.TermsActivity
@@ -104,8 +105,7 @@ class LoginActivity : AppCompat() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val status = snapshot.child("status").value.toString()
                     val name = snapshot.child("name").value.toString()
-                    val sharedPreferences: SharedPreferences =
-                        getSharedPreferences("user_status", Context.MODE_PRIVATE)
+                    val sharedPreferences: SharedPreferences = App.shared.sharedPreferences
                     val editor: SharedPreferences.Editor = sharedPreferences.edit()
                     editor.apply {
                         putString("status", status)

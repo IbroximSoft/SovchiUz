@@ -182,7 +182,6 @@ class WomanFragment : Fragment() {
         reference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val balance = snapshot.child("balance").value.toString()
-                Toast.makeText(requireContext(), balance, Toast.LENGTH_SHORT).show()
                 if (balance == "0") {
                     val xabar = getString(R.string.sizda_pul_yoq)
                     dialogShow(xabar)
@@ -191,7 +190,6 @@ class WomanFragment : Fragment() {
                     val intent =
                         Intent(requireContext(), PrivateChatActivity::class.java)
                     intent.putExtra("you_id", uid)
-                    Toast.makeText(requireContext(), uid, Toast.LENGTH_SHORT).show()
                     startActivity(intent)
                 }
             }

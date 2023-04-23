@@ -1,11 +1,6 @@
 package uz.ibrohim.sovchiuz.message;
 
 public class UserChatData {
-    // var uid1: String? = null
-    //    var uid2: String? =null
-    //    var status: String? = null
-    //    var chat: PrivateChatData? = null
-    //    var key: String? = null   Hozir 5 minut
 
     String uid1;
     String uid2;
