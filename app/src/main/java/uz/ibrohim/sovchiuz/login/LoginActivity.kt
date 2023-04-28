@@ -1,12 +1,10 @@
 package uz.ibrohim.sovchiuz.login
 
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.google.android.gms.tasks.OnCompleteListener
@@ -112,6 +110,7 @@ class LoginActivity : AppCompat() {
                         putString("name", name)
                     }.apply()
                     val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     startActivity(intent)
                     finish()
                 }

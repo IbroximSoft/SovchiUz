@@ -7,40 +7,36 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import uz.ibrohim.sovchiuz.databinding.ChatLayoutBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
-class PrivateChatAdapter:RecyclerView.Adapter<PrivateChatAdapter.Holder>() {
+class PrivateChatAdapter : RecyclerView.Adapter<PrivateChatAdapter.Holder>() {
 
-    var list : List<PrivateChatData> = ArrayList<PrivateChatData>()
+    var list: List<PrivateChatData> = ArrayList<PrivateChatData>()
 
-    fun add(l : List<PrivateChatData>){
+    fun add(l: List<PrivateChatData>) {
         list = l
         notifyDataSetChanged()
     }
 
-    class Holder(val item: ChatLayoutBinding):RecyclerView.ViewHolder(item.root){
+    class Holder(val item: ChatLayoutBinding) : RecyclerView.ViewHolder(item.root) {
         private lateinit var auth: FirebaseAuth
 
-        fun with(data: PrivateChatData){
+        fun with(data: PrivateChatData) {
+
             auth = FirebaseAuth.getInstance()
             val currentUserID = auth.currentUser?.uid.toString()
-            if (currentUserID == data.user_id){
+
+            if (currentUserID == data.user_id) {
                 item.u1Layout.visibility = View.GONE
                 item.u2Layout.visibility = View.VISIBLE
-                if (data.type == "photo"){
+                if (data.type == "photo") {
                     item.u2Text.visibility = View.GONE
                     item.u2Photo.visibility = View.VISIBLE
-//                    Glide.with(itemView.context)
-//                        .load(data.image_url)
-//                        .override(10,10)
-//                        .into(item.u2Photo)
 
-                    //ovozim boryabdimi ?
-
-                }else{
+                } else {
                     item.u2Text.visibility = View.VISIBLE
                     item.u2Photo.visibility = View.GONE
                     item.u2Text.text = data.message
@@ -48,18 +44,13 @@ class PrivateChatAdapter:RecyclerView.Adapter<PrivateChatAdapter.Holder>() {
 
                 item.u2Date.text = convertLongToTime(data.time.toLong())
 
-                //Icon yo'q bo'lib qolibdimi ?
-            }else{
+            } else {
                 item.u1Layout.visibility = View.VISIBLE
                 item.u2Layout.visibility = View.GONE
-                if (data.type == "photo"){
+                if (data.type == "photo") {
                     item.u1Text.visibility = View.GONE
                     item.u1Photo.visibility = View.VISIBLE
-//                    Glide.with(itemView.context)
-//                        .load(data.image_url)
-//                        .override(10,10)
-//                        .into(item.u1Photo)
-                }else{
+                } else {
                     item.u1Text.visibility = View.VISIBLE
                     item.u1Photo.visibility = View.GONE
                     item.u1Text.text = data.message
@@ -67,7 +58,7 @@ class PrivateChatAdapter:RecyclerView.Adapter<PrivateChatAdapter.Holder>() {
 
                 item.u1Date.text = convertLongToTime(data.time.toLong())
             }
-            if(data.user_id != currentUserID) {
+            if (data.user_id != currentUserID) {
                 if (!data.reading) {
                     val updates = HashMap<String, Any>()
                     updates["reading"] = true
@@ -77,18 +68,18 @@ class PrivateChatAdapter:RecyclerView.Adapter<PrivateChatAdapter.Holder>() {
             }
             item.u2Photo.setOnClickListener {
                 val intent = Intent()
-                intent.putExtra("img",data.image_url)
+                intent.putExtra("img", data.image_url)
                 intent.setClass(itemView.context, PhotoActivity::class.java) //Xaxaxa startActivt
                 itemView.context.startActivity(intent)
             }
 
             item.u1Photo.setOnClickListener {
                 val intent = Intent()
-                intent.putExtra("img",data.image_url)
-                intent.putExtra("user",true)
-                intent.putExtra("id",data.id)
-                intent.putExtra("room",data.chat_key)
-                intent.setClass(itemView.context,PhotoActivity::class.java)
+                intent.putExtra("img", data.image_url)
+                intent.putExtra("user", true)
+                intent.putExtra("id", data.id)
+                intent.putExtra("room", data.chat_key)
+                intent.setClass(itemView.context, PhotoActivity::class.java)
                 itemView.context.startActivity(intent)
             }
 
@@ -102,7 +93,7 @@ class PrivateChatAdapter:RecyclerView.Adapter<PrivateChatAdapter.Holder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view = ChatLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val view = ChatLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return Holder(view)
     }
 

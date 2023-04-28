@@ -4,22 +4,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PrivateChatActivity">
+    tools:context=".chat_page.PrivateChatActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:titleTextAppearance="@style/Toolbar.TitleText"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/toolName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/ttfirsneue_medium"/>
+
+            <TextView
+                android:id="@+id/toolOnline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:fontFamily="@font/tommy_soft_regular"
+                android:layout_marginStart="5dp"/>
+
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rec"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/taklif_linear"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <LinearLayout
+        android:id="@+id/taklif_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/tommy_soft_regular"
+            android:text="@string/siz_ushbu_nomzod"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:background="@drawable/btn_button_on"
+                android:backgroundTint="@color/filter_color"
+                android:fontFamily="@font/tommy_soft_regular"
+                android:text="Rad etish"
+                android:textAllCaps="false"
+                android:textColor="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:backgroundTint="@color/blue"
+                android:background="@drawable/btn_button_on"
+                android:textColor="@color/white"
+                android:text="Xa"
+                android:layout_alignParentEnd="true"
+                android:textAllCaps="false"
+                android:fontFamily="@font/tommy_soft_regular"/>
+
+        </RelativeLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -42,8 +113,9 @@
             android:background="@null"
             android:fontFamily="@font/ttfirsneue_medium"
             android:inputType="textCapSentences"
-            android:hint="Xabarni yozing"
-            android:padding="12dp"/>
+            android:hint="@string/xabarni_yozing"
+            android:padding="12dp"
+            tools:ignore="Autofill" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/send_Image"

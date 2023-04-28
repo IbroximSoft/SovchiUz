@@ -81,4 +81,6 @@
     <string name="nikohingiz">Nikohingiz:</string>
     <string name="ibodatdaligingiz">Ibodatdaligingiz:</string>
     <string name="sizning_shartingiz">Sizning shartingiz:</string>
+    <string name="siz_ushbu_nomzod">Siz ushbu nomzod bilan oila qurdingizmi (qurmoqchimisiz) Xa tugmasini bossangiz sizning va ushbu nomzodning anketasi o\'chib ketadi</string>
+    <string name="xabarni_yozing">Xabarni yozing</string>
 </resources>

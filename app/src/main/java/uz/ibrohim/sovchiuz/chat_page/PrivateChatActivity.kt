@@ -1,6 +1,7 @@
 package uz.ibrohim.sovchiuz.chat_page
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -13,9 +14,13 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.NonNull
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.appuj.customizedalertdialoglib.CustomizedAlertDialog
+import com.appuj.customizedalertdialoglib.CustomizedAlertDialogCallback
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
@@ -48,8 +53,8 @@ class PrivateChatActivity : AppCompatActivity() {
     private lateinit var chat_key: String
     private var you_id: String = ""
     private var token: String? = null
-    lateinit var uid: String
-    lateinit var mAuth: FirebaseAuth
+    private lateinit var uid: String
+    private lateinit var mAuth: FirebaseAuth
     var is_send = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +63,6 @@ class PrivateChatActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
-
         mAuth = FirebaseAuth.getInstance()
         uid = mAuth.currentUser?.uid.toString()
 
@@ -66,10 +70,47 @@ class PrivateChatActivity : AppCompatActivity() {
         you_id = intent.getStringExtra("you_id").toString()
         App.shared.saveRoom(you_id)
         binding.sendImage.setOnClickListener {
-            if (check()){
+            if (check()) {
                 PickImages()
             }
         }
+
+        reference.child("users").child(you_id)
+            .addValueEventListener(object : ValueEventListener {
+                @SuppressLint("SetTextI18n")
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val name = snapshot.child("name").value.toString()
+                    val online = snapshot.child("online").value
+                    supportActionBar?.title = ""
+                    binding.toolName.text = name
+                    if (online == true) {
+                        binding.toolOnline.text = "Online"
+                        binding.toolOnline.setTextColor(resources.getColor(android.R.color.holo_green_dark))
+                    } else {
+                        binding.toolOnline.text = "Offline"
+                        binding.toolOnline.setTextColor(resources.getColor(android.R.color.holo_red_dark))
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+
+            })
+
+        reference.child("Takliflar").child(you_id)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val uidS = snapshot.child("accepted").value.toString()
+                    if (uid == uidS) {
+
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+            })
 
         binding.message.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -95,24 +136,24 @@ class PrivateChatActivity : AppCompatActivity() {
         check_user()
 
         binding.sendBtn.setOnClickListener {
-           if(chat_key =="null"){
-               send1()
-           }else{
-               val key = db.push().push().key.toString()
-               val data = PrivateChatData(
-                   key,
-                   binding.message.text.toString(),
-                   uid,
-                   System.currentTimeMillis().toString(),
-                   "text",
-                   "",
-                   false,
-                   chat_key
-               )
-               db.child(chat_key).child("chat").child(key).setValue(data)
-               notfication()
-               binding.message.setText("")
-           }
+            if (chat_key == "null") {
+                send1()
+            } else {
+                val key = db.push().push().key.toString()
+                val data = PrivateChatData(
+                    key,
+                    binding.message.text.toString(),
+                    uid,
+                    System.currentTimeMillis().toString(),
+                    "text",
+                    "",
+                    false,
+                    chat_key
+                )
+                db.child(chat_key).child("chat").child(key).setValue(data)
+                notfication()
+                binding.message.setText("")
+            }
             is_send = true
         }
 
@@ -121,14 +162,9 @@ class PrivateChatActivity : AppCompatActivity() {
         adapter = PrivateChatAdapter()
 
         val linearLayoutManager = LinearLayoutManager(this)
-//        linearLayoutManager.reverseLayout = true
         linearLayoutManager.stackFromEnd = true
         binding.rec.layoutManager = linearLayoutManager
         binding.rec.adapter = adapter
-
-//        binding.rec.layoutManager = LinearLayoutManager(this)
-//        binding.rec.setHasFixedSize(true)
-//        (binding.rec.layoutManager as LinearLayoutManager).stackFromEnd = true
 
         if (chat_key == "null") {
             getChatKey()
@@ -137,15 +173,15 @@ class PrivateChatActivity : AppCompatActivity() {
     }
 
 
-    fun check_user(){
+    fun check_user() {
         db.child(chat_key)
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.child("status").value.toString() == "blok"){
+                    if (snapshot.child("status").value.toString() == "blok") {
                         finish()
                     }
 
-                    Log.d("ttttttt",snapshot.child("status").value.toString())
+                    Log.d("ttttttt", snapshot.child("status").value.toString())
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -154,7 +190,7 @@ class PrivateChatActivity : AppCompatActivity() {
             })
     }
 
-    private fun send1(){
+    private fun send1() {
         val key = db.push().key.toString()
         val key2 = db.push().push().key.toString()
         val u = UserChatData(uid, you_id, "Aktiv", key)
@@ -185,7 +221,8 @@ class PrivateChatActivity : AppCompatActivity() {
         super.onDestroy()
         App.shared.saveRoom("")
     }
-//shunaqa ishlame qolyabdi
+
+    //shunaqa ishlame qolyabdi
     override fun onStop() {
         super.onStop()
         App.shared.saveRoom("")
@@ -205,7 +242,8 @@ class PrivateChatActivity : AppCompatActivity() {
                 override fun onComplete(
                     error: DatabaseError?,
                     committed: Boolean,
-                    currentData: DataSnapshot?) {
+                    currentData: DataSnapshot?
+                ) {
                 }
             })
     }
@@ -246,8 +284,8 @@ class PrivateChatActivity : AppCompatActivity() {
             }
 
             adapter.add(list)
-            if (is_send){
-                binding.rec.smoothScrollToPosition(list.size-1)
+            if (is_send) {
+                binding.rec.smoothScrollToPosition(list.size - 1)
                 is_send = false
             }
         }
@@ -282,7 +320,7 @@ class PrivateChatActivity : AppCompatActivity() {
             to = token.toString(),
             data = NotificationDataModel(
                 key = chat_key, // Yozish shart emas
-                title = App.shared.getIsm()+ " Yangi xabar", // Sarlavha nomi shunga
+                title = App.shared.getIsm() + " Yangi xabar", // Sarlavha nomi shunga
                 body = binding.message.text.toString(), // Qisqa matn Yozilgan xabar bo'lishi mumkin
                 token = token.toString(),
                 to_id = uid,
@@ -306,14 +344,14 @@ class PrivateChatActivity : AppCompatActivity() {
 
     lateinit var rasm: File
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (data != null){
-            rasm = ImageCompress.compress(this,uriToFile(data.data!!,this))
-            Log.d("dy_test",rasm.length().toString())
+        if (data != null) {
+            rasm = ImageCompress.compress(this, uriToFile(data.data!!, this))
+            Log.d("dy_test", rasm.length().toString())
             val fileUri: String = rasm.path.toString()
             uploadImageToFirebaseStorage(fileUri)
-            //chat dataga
         }
     }
 
@@ -368,9 +406,9 @@ class PrivateChatActivity : AppCompatActivity() {
                 imageRef.downloadUrl.addOnSuccessListener { uri -> // URL of the uploaded image
                     val imageUrl = uri.toString()
                     Log.d("rasimyuklanmoqda", "Image uploaded successfully. Image URL: $imageUrl")
-                    if (chat_key == "null"){
+                    if (chat_key == "null") {
                         sendImg1(imageUrl)
-                    }else{
+                    } else {
                         sendImg(imageUrl)
                     }
                 }
@@ -379,7 +417,7 @@ class PrivateChatActivity : AppCompatActivity() {
     }
 
 
-    private fun sendImg(imageUrl: String){
+    private fun sendImg(imageUrl: String) {
 
         val key2 = db.push().push().key.toString()
         val data = PrivateChatData(
@@ -397,10 +435,9 @@ class PrivateChatActivity : AppCompatActivity() {
         notfication()
 
 
-
     }
 
-    private fun sendImg1(imageUrl: String){
+    private fun sendImg1(imageUrl: String) {
         val key = db.push().key.toString()
         val key2 = db.push().push().key.toString()
         val u = UserChatData(uid, you_id, "Aktiv", key)
@@ -426,6 +463,18 @@ class PrivateChatActivity : AppCompatActivity() {
         }
     }
 
+    private fun getTaklifs() {
+        val dataHas = HashMap<String, String>()
+        dataHas["accepted"] = you_id
+        dataHas["sent"] = uid
+        dataHas["status"] = "wait"
+        reference.child("Takliflar").child(uid).setValue(dataHas)
+            .addOnCompleteListener{
+                Toasty.success(this, "Taklif yuborildi!",
+                    Toasty.LENGTH_SHORT, true).show()
+            }
+    }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         @NonNull permissions: Array<String>,
@@ -440,7 +489,6 @@ class PrivateChatActivity : AppCompatActivity() {
     }
 
 
-
     private fun PickImages() {
         val intent = Intent()
         intent.type = "image/*"
@@ -450,26 +498,79 @@ class PrivateChatActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.chat_option,menu)
+        menuInflater.inflate(R.menu.chat_option, menu)
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean { //L*****)))) iya men
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.block -> {
-                Log.d("tttttt","Joyida")
-                db.child(chat_key).child("bloked_user").setValue(uid)
-                db.child(chat_key).child("chat").removeValue()
-                db.child(chat_key).child("status").setValue("blok")
-                finish()
+                CustomizedAlertDialog.callAlertDialog(this, "Diqqat!",
+                    "Siz ushbu nomzodni rostdan ham blo'k qilmoqchimisiz ?",
+                    "Xa", "Yo'q", false,
+                    object : CustomizedAlertDialogCallback<String> {
+                        override fun alertDialogCallback(callback: String) {
+                            if (callback == "1") {
+                                db.child(chat_key).child("bloked_user").setValue(uid)
+                                db.child(chat_key).child("chat").removeValue()
+                                db.child(chat_key).child("status").setValue("blok")
+                                finish()
+                            }
+                        }
+                    })
+                true
+            }
+            R.id.nikoh -> {
+                CustomizedAlertDialog.callAlertDialog(this, "Diqqat!",
+                    "Siz xa tugmasini bosgandan so'ng ushbu nomzodni tasdiqlashini kutasiz, tasdiqlansa anketalaringiz o'chadi",
+                    "Xa", "Ortga", false,
+                    object : CustomizedAlertDialogCallback<String> {
+                        override fun alertDialogCallback(callback: String) {
+                            if (callback == "1") {
+                                getTaklif()
+                            }
+                        }
+                    })
                 true
             }
             else -> {
-                Log.d("tttttt","Emas")
+                Log.d("tttttt", "Emas")
                 super.onOptionsItemSelected(item)
+            }
+        }
+    }
 
+    private fun getTaklif() {
+        getTaklifs()
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://fcm.googleapis.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val service = retrofit.create(FcmService::class.java)
+
+        val notification = NotificationModel(
+            to = token.toString(),
+            data = NotificationDataModel(
+                key = chat_key, // Yozish shart emas
+                title = App.shared.getIsm() + " Yangi xabar", // Sarlavha nomi shunga
+                body = "Taklif yuborildi", // Qisqa matn Yozilgan xabar bo'lishi mumkin
+                token = token.toString(),
+                to_id = uid,
+                click_action = "ChatActivity", // Bunlarga tegmang
+                image = null // random rasm uchun link
+            )
+        )
+
+        service.sendNotification(notification).enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                // xabar muvaffaqiyatli yuborildi
             }
 
-        }
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                // xabarni yuborishda xatolik yuz berdi
+                //Yuborgan fileni dasturga qoshing
+            }
+        })
     }
 }

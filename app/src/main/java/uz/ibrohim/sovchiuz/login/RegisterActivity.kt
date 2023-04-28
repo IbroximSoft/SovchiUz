@@ -164,7 +164,7 @@ class RegisterActivity : AppCompat() {
                             dataHas["name"] = name
                             dataHas["email"] = email
                             dataHas["password"] = password
-                            dataHas["balance"] = "0"
+                            dataHas["balance"] = "2"
                             dataHas["status"] = "no"
                             dataHas["token"] = token
                             dataHas["uid"] = currentUserID
@@ -175,6 +175,7 @@ class RegisterActivity : AppCompat() {
                                         Toasty.LENGTH_SHORT, true
                                     ).show()
                                     val intent = Intent(this@RegisterActivity, HomeActivity::class.java)
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                                     startActivity(intent)
                                     finish()
                                     val sharedPreferences: SharedPreferences = App.shared.sharedPreferences

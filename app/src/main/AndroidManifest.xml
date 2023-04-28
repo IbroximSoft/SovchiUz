@@ -28,7 +28,8 @@
             android:exported="false" />
         <activity
             android:name=".chat_page.PrivateChatActivity"
-            android:exported="false">
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="ChatActivity" />
 

@@ -23,4 +23,9 @@
         <item name="background">@color/black</item>
     </style>
 
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">15sp</item>
+        <item name="fontFamily">@font/ttfirsneue_regular</item>
+    </style>
+
 </resources>

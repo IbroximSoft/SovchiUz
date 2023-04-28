@@ -1,12 +1,9 @@
 package uz.ibrohim.sovchiuz.chat_page
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -20,11 +17,9 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import uz.ibrohim.sovchiuz.R
 import uz.ibrohim.sovchiuz.databinding.ChatItemBinding
-import uz.ibrohim.sovchiuz.databinding.ChatsLayoutBinding
 import uz.ibrohim.sovchiuz.message.UserChatData
 import java.text.SimpleDateFormat
 import java.util.*
-
 
 class ChatsAdapter(val click: Click):RecyclerView.Adapter<ChatsAdapter.Holder>() {
 

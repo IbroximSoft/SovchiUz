@@ -23,7 +23,7 @@
     </string-array>
 
     <string name="app_name">SovchiUz</string>
-    <string name="next">Next</string>
+    <string name="next">Keyingi</string>
     <string name="program_condition">Dastur sharti!</string>
     <string name="agree">Roziman</string>
     <string name="condition_1">Ushbu dasturni tayyorlayotganda har taraflama ōyladik savob uchun bōlgandan keyin ushbu dastur ortidan gunohkor bōlishni ham xohlamaymiz!</string>
@@ -105,4 +105,6 @@
     <string name="sizning_shartingiz">Sizning shartingiz:</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="siz_ushbu_nomzod">Siz ushbu nomzod bilan oila qurdingizmi (qurmoqchimisiz) Xa tugmasini bossangiz sizning va ushbu nomzodning anketasi o\'chib ketadi</string>
+    <string name="xabarni_yozing">Xabarni yozing</string>
 </resources>

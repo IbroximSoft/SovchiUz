@@ -3,15 +3,11 @@ package uz.ibrohim.sovchiuz
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.widget.PopupMenu
-import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.messaging.FirebaseMessaging
 import uz.ibrohim.sovchiuz.databinding.ActivityHomeBinding
 import uz.ibrohim.sovchiuz.language.AppCompat
 
@@ -87,7 +83,6 @@ class HomeActivity : AppCompat() {
             })
 
         val connectedRef = FirebaseDatabase.getInstance().getReference(".info/connected")
-
         connectedRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val connected = snapshot.getValue(Boolean::class.java) ?: false
@@ -104,7 +99,7 @@ class HomeActivity : AppCompat() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.w("TAG222", "Listener was cancelled")
+
             }
         })
     }
@@ -120,9 +115,3 @@ class HomeActivity : AppCompat() {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
-
-//        val sharedPreference: SharedPreferences =
-//            this.getSharedPreferences("user_status", Context.MODE_PRIVATE)
-//        val login: String? = sharedPreference.getString("status", null)
-//        val name: String? = sharedPreference.getString("name", null)
-//        Toast.makeText(this, name, Toast.LENGTH_SHORT).show()

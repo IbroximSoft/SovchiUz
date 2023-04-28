@@ -1,24 +1,23 @@
 package uz.ibrohim.sovchiuz.filter_page
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.*
 import androidx.core.text.isDigitsOnly
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.clk.progress.ProgressDialog.dialog
 import com.github.dewinjm.monthyearpicker.MonthYearPickerDialogFragment
-import com.google.firebase.firestore.*
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import uz.ibrohim.sovchiuz.R
-import uz.ibrohim.sovchiuz.chat_page.PrivateChatAdapter
 import uz.ibrohim.sovchiuz.databinding.FragmentFilterMBinding
 import uz.ibrohim.sovchiuz.home_page.adapters.AnketaItems
 import uz.ibrohim.sovchiuz.home_page.adapters.HomeAdapter
 import java.util.*
-import kotlin.collections.ArrayList
+
 
 class FilterMFragment : Fragment() {
     private var _binding: FragmentFilterMBinding? = null
@@ -91,14 +90,17 @@ class FilterMFragment : Fragment() {
             }
     }
 
+    @SuppressLint("RtlHardcoded")
     private fun showFilterDialog() {
         val builder = AlertDialog.Builder(requireContext()).create()
+        builder.window?.setGravity(Gravity.TOP)
         val view = layoutInflater.inflate(R.layout.filter_item, null)
         val cancelBtn = view.findViewById<Button>(R.id.cancel)
         val filterBtn = view.findViewById<Button>(R.id.filter)
         val yearTxt = view.findViewById<TextView>(R.id.year)
         val provinceTxt = view.findViewById<AutoCompleteTextView>(R.id.province)
         builder.setView(view)
+
         cancelBtn.setOnClickListener {
             builder.dismiss()
         }
@@ -106,7 +108,7 @@ class FilterMFragment : Fragment() {
 
         booksList2 = arrayListOf()
         filterBtn.setOnClickListener {
-            if (yearTxt.text.isDigitsOnly() && provinceTxt.text.isNotEmpty()) {
+            if (yearTxt.text.isNotEmpty() && provinceTxt.text.isNotEmpty()) {
                 db.collection("male_anketa").get()
                     .addOnSuccessListener {
                         if (!it.isEmpty) {
@@ -120,22 +122,21 @@ class FilterMFragment : Fragment() {
                                 }
                             }
                             binding.filMRv.adapter = HomeAdapter(booksList2)
-                            binding.textNoData.visibility = View.INVISIBLE
+                            binding.linerFavorite.visibility = View.GONE
                             if (booksList2.isEmpty()) {
-                                binding.textNoData.visibility = View.VISIBLE
+                                binding.linerFavorite.visibility = View.VISIBLE
                             }
                         }
                     }
+
                 booksList2.clear()
                 builder.dismiss()
             } else {
-                Toast.makeText(
-                    requireContext(),
-                    "Iltimos Barcha Maydonlarni To'ldiring",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(requireContext(), getString(R.string.you_must_pay_in_full),
+                    Toast.LENGTH_SHORT).show()
             }
         }
+
         yearTxt.setOnClickListener {
             val calendar: Calendar = Calendar.getInstance()
             val yearSelected = calendar.get(Calendar.YEAR)
@@ -150,6 +151,7 @@ class FilterMFragment : Fragment() {
                 yearTxt.text = year.toString()
             }
         }
+
         val language = resources.getStringArray(R.array.Province)
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.language_item, language)
         provinceTxt.setAdapter(arrayAdapter)

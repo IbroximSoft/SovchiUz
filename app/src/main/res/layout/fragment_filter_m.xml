@@ -49,7 +49,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/btn_button_off"
                 android:padding="3dp"
-                android:src="@drawable/ic_clear_white_24dp"
+                android:src="@drawable/ic_clear"
                 tools:ignore="ContentDescription" />
         </LinearLayout>
     </RelativeLayout>
@@ -58,14 +58,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/text_no_data"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Ma'lumotlar yo'q"
-            android:textSize="25sp"
-            android:visibility="invisible" />
+        <LinearLayout
+            android:id="@+id/liner_favorite"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/empty_icon"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/tommy_soft_regular"
+                android:text="Hech qanday maʼlumot topilmadi"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+        </LinearLayout>
 
         <FrameLayout
             android:id="@+id/empty_frame"
