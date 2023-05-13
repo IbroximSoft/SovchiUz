@@ -33,8 +33,7 @@
         android:layout_height="55dp"
         android:layout_below="@+id/name"
         android:layout_margin="10dp"
-        android:orientation="horizontal"
-        android:visibility="gone">
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -70,6 +69,7 @@
             android:background="#979696" />
 
         <LinearLayout
+            android:id="@+id/linear_send"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -103,6 +103,7 @@
             android:background="#979696" />
 
         <LinearLayout
+            android:id="@+id/linear_came"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

@@ -19,6 +19,12 @@
         android:theme="@style/Theme.SovchiUz"
         tools:targetApi="31">
         <activity
+            android:name=".more_page.offer.CameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".more_page.offer.SendActivity"
+            android:exported="false" />
+        <activity
             android:name=".payment.PaymentActivity"
             android:exported="false" />
         <activity
@@ -91,6 +97,7 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

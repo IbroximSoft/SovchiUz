@@ -4,6 +4,7 @@ data class PayItem(
     var description: String? = null,
     var title: String? = null,
     var price: String? = null,
+    var coin: String? = null,
     var key: String? = null,
 )
 
