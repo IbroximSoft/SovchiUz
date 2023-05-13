@@ -15,7 +15,8 @@ class TaklifViewModel : ViewModel() {
         return takliflar
     }
 
-
+     // Bu yerga takliflar yuborilsin
+    // Btnni bosganda
 
     fun sendTaklif(data: TaklifData){
        db.child(data.key.toString()).setValue(data)
