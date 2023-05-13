@@ -29,6 +29,7 @@
                 android:layout_height="17dp"
                 android:src="@drawable/ic_eye"
                 android:layout_marginStart="5dp"
+                android:visibility="gone"
                 tools:ignore="ContentDescription" />
 
             <TextView
@@ -37,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
                 android:text="1"
+                android:visibility="gone"
                 android:fontFamily="@font/ttfirsneue_regular"
                 android:textColor="@color/black"
                 android:textSize="12sp" />

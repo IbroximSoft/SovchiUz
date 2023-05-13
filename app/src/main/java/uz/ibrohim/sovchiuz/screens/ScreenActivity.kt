@@ -15,6 +15,7 @@ import uz.ibrohim.sovchiuz.TermsActivity
 import uz.ibrohim.sovchiuz.databinding.ActivityScreenBinding
 import uz.ibrohim.sovchiuz.language.AppCompat
 import uz.ibrohim.sovchiuz.language.LanguageManager
+import kotlin.system.exitProcess
 
 class ScreenActivity : AppCompat() {
 
@@ -108,5 +109,11 @@ class ScreenActivity : AppCompat() {
         val language = resources.getStringArray(R.array.language)
         val arrayAdapter = ArrayAdapter(this, R.layout.language_item, language)
         binding.screenLanguage.setAdapter(arrayAdapter)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishAffinity()
+        exitProcess(0)
     }
 }

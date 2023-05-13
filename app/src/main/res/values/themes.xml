@@ -28,4 +28,13 @@
         <item name="fontFamily">@font/ttfirsneue_regular</item>
     </style>
 
+    <style name="MyCardViewOverlay">
+        <item name="cornerFamily">rounded</item>
+        <!-- below items does not work with normal ImageView -->
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeTopLeft">60dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
 </resources>

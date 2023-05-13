@@ -4,16 +4,22 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.appuj.customizedalertdialoglib.CustomizedAlertDialog
+import com.appuj.customizedalertdialoglib.CustomizedAlertDialogCallback
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
+import uz.ibrohim.sovchiuz.App
+import uz.ibrohim.sovchiuz.HomeActivity
 import uz.ibrohim.sovchiuz.R
 import uz.ibrohim.sovchiuz.databinding.FragmentProfileBinding
 import uz.ibrohim.sovchiuz.more_page.profile.edit_quest.MaleEditQuesActivity
 import uz.ibrohim.sovchiuz.more_page.profile.edit_quest.WomanEditQuesActivity
+import uz.ibrohim.sovchiuz.screens.ScreenActivity
 
 class ProfileFragment : Fragment() {
 
@@ -21,8 +27,10 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
     private var db = FirebaseFirestore.getInstance()
+    private lateinit var reference: DatabaseReference
     private var gender: String = ""
     private var province: String = ""
+    private var key: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +39,7 @@ class ProfileFragment : Fragment() {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
         auth = FirebaseAuth.getInstance()
+        reference = FirebaseDatabase.getInstance().reference
         val currentUserID = auth.currentUser?.uid.toString()
 
         val sharedPreference: SharedPreferences =
@@ -82,6 +91,56 @@ class ProfileFragment : Fragment() {
             }
         }
 
+        binding.deleteBtn.setOnClickListener {
+            CustomizedAlertDialog.callAlertDialog(requireContext(), "Diqqat!",
+                "Siz rostdan ham anketangizni o'chirmoqchimisiz ? Xa tugmasini bossangiz barcha yozishmalar ham o'chib ketadi",
+                "Xa", "Yo'q", false,
+                object : CustomizedAlertDialogCallback<String> {
+                    override fun alertDialogCallback(callback: String) {
+                        if (callback == "1") {
+                            deleteData(currentUserID)
+                        }
+                    }
+                })
+        }
+
         return binding.root
+    }
+
+    private fun deleteData(currentUserID: String) {
+        db.collection("all_anketa").document(currentUserID).delete()
+        db.collection("male_anketa").document(currentUserID).delete()
+        db.collection("woman_anketa").document(currentUserID).delete()
+            .addOnSuccessListener {
+                reference.child("users").child(currentUserID).child("status").setValue("no")
+                reference.child("Chat")
+                    .addValueEventListener(object : ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            for (d in snapshot.children) {
+                                if (d.child("uid1").exists() and d.child("uid2").exists() and
+                                    (d.child("uid1").value == currentUserID ||
+                                            d.child("uid2").value == currentUserID) and
+                                    d.child("status").exists() and d.child("chat").exists() and
+                                    d.child("key").exists()) {
+                                    key = d.child("key").value.toString()
+                                    chatDelete()
+                                    App.shared.deleteDatas(requireContext())
+                                    val intent = Intent(requireContext(), ScreenActivity::class.java)
+                                    startActivity(intent)
+                                }
+                            }
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            TODO("Not yet implemented")
+                        }
+                    })
+            }
+    }
+
+    private fun chatDelete() {
+        for (delete in key){
+            reference.child("Chat").child(key).removeValue()
+        }
     }
 }

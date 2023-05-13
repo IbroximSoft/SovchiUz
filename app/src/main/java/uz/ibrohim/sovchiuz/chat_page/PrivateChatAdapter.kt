@@ -66,10 +66,11 @@ class PrivateChatAdapter : RecyclerView.Adapter<PrivateChatAdapter.Holder>() {
                         .child(data.chat_key).child("chat").child(data.id).updateChildren(updates)
                 }
             }
+
             item.u2Photo.setOnClickListener {
                 val intent = Intent()
                 intent.putExtra("img", data.image_url)
-                intent.setClass(itemView.context, PhotoActivity::class.java) //Xaxaxa startActivt
+                intent.setClass(itemView.context, PhotoActivity::class.java)
                 itemView.context.startActivity(intent)
             }
 

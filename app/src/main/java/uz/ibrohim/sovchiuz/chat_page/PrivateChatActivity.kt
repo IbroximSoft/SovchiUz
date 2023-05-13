@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -14,9 +15,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.annotation.NonNull
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.appuj.customizedalertdialoglib.CustomizedAlertDialog
@@ -33,6 +32,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import uz.ibrohim.sovchiuz.App
 import uz.ibrohim.sovchiuz.R
+import uz.ibrohim.sovchiuz.chat_page.info.ChatInfoActivity
 import uz.ibrohim.sovchiuz.databinding.ActivityPrivateChatBinding
 import uz.ibrohim.sovchiuz.message.FcmService
 import uz.ibrohim.sovchiuz.message.NotificationDataModel
@@ -63,16 +63,28 @@ class PrivateChatActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
         mAuth = FirebaseAuth.getInstance()
         uid = mAuth.currentUser?.uid.toString()
+
+        binding.toolbar.setBackgroundColor(Color.parseColor("#5871ff"))
+        binding.toolbar.setNavigationOnClickListener { onBackPressed() }
 
         chat_key = intent.getStringExtra("chat_key").toString()
         you_id = intent.getStringExtra("you_id").toString()
         App.shared.saveRoom(you_id)
+
         binding.sendImage.setOnClickListener {
             if (check()) {
                 PickImages()
             }
+        }
+
+        binding.toolLinear.setOnClickListener {
+            val intent = Intent(this, ChatInfoActivity::class.java)
+            intent.putExtra("uid", you_id)
+            startActivity(intent)
         }
 
         reference.child("users").child(you_id)
@@ -85,17 +97,14 @@ class PrivateChatActivity : AppCompatActivity() {
                     binding.toolName.text = name
                     if (online == true) {
                         binding.toolOnline.text = "Online"
-                        binding.toolOnline.setTextColor(resources.getColor(android.R.color.holo_green_dark))
+                        binding.toolOnline.setTextColor(resources.getColor(R.color.filter_color))
                     } else {
                         binding.toolOnline.text = "Offline"
-                        binding.toolOnline.setTextColor(resources.getColor(android.R.color.holo_red_dark))
+                        binding.toolOnline.setTextColor(resources.getColor(R.color.black))
                     }
                 }
 
-                override fun onCancelled(error: DatabaseError) {
-
-                }
-
+                override fun onCancelled(error: DatabaseError) {}
             })
 
         reference.child("Takliflar").child(you_id)
@@ -339,7 +348,6 @@ class PrivateChatActivity : AppCompatActivity() {
                 //Yuborgan fileni dasturga qoshing
             }
         })
-
     }
 
     lateinit var rasm: File

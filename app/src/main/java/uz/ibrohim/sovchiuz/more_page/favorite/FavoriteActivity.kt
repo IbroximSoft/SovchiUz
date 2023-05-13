@@ -21,6 +21,10 @@ class FavoriteActivity : AppCompatActivity() {
         binding = ActivityFavoriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        auth = FirebaseAuth.getInstance()
+        val currentUserID = auth.currentUser?.uid.toString()
+        dbRef = FirebaseDatabase.getInstance().getReference("all_favorite").child(currentUserID)
+
         val gridLayoutManager = GridLayoutManager(this, 3)
         binding.rvAll.layoutManager = gridLayoutManager
         userArrayList = arrayListOf()
@@ -32,11 +36,6 @@ class FavoriteActivity : AppCompatActivity() {
     }
 
     private fun getUserData() {
-
-        auth = FirebaseAuth.getInstance()
-        val currentUserID = auth.currentUser?.uid.toString()
-        dbRef = FirebaseDatabase.getInstance().getReference("all_favorite").child(currentUserID)
-
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()){
@@ -55,6 +54,5 @@ class FavoriteActivity : AppCompatActivity() {
 
             }
         })
-
     }
 }
