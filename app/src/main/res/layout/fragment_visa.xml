@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".payment.pay_category.VisaFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <ImageView
+                android:id="@+id/visa_uzcard"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="2dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:src="@drawable/uzcard"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/visa_humo"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="2dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:src="@drawable/humo"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/pay_btn"
+                android:src="@drawable/visa"
+                tools:ignore="ContentDescription" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/filter_color"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/visa_sovchi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/ttfirsneue_italic"
+                android:text="SovchiUz Visa"
+                android:textColor="#0E90F8"
+                android:textSize="22sp" />
+
+            <com.santalu.maskedittext.MaskEditText
+                android:id="@+id/visa_number"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_below="@id/visa_sovchi"
+                android:layout_marginStart="10dp"
+                android:background="@null"
+                android:fontFamily="@font/castoro"
+                android:hint="0000 0000 0000 0000"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                app:met_mask="#### #### #### ####" />
+
+            <RelativeLayout
+                android:id="@+id/visa_linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/visa_number"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <com.santalu.maskedittext.MaskEditText
+                    android:id="@+id/visa_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:background="@null"
+                    android:fontFamily="@font/castoro"
+                    android:hint="00/00"
+                    android:inputType="number"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:met_mask="##/##" />
+
+                <com.santalu.maskedittext.MaskEditText
+                    android:id="@+id/visa_cvc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:background="@null"
+                    android:fontFamily="@font/castoro"
+                    android:hint="CVC"
+                    android:inputType="number"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:met_mask="###"
+                    tools:ignore="RelativeOverlap" />
+
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/visa_name"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@id/visa_linear"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:fontFamily="@font/castoro"
+                android:hint="@string/enter_name"
+                android:lines="1"
+                android:singleLine="true"
+                android:textSize="20sp"
+                tools:ignore="Autofill,TextFields" />
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/visa"
+                tools:ignore="ContentDescription" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/visa_btn"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/btn_button_on"
+        android:backgroundTint="#0E90F8"
+        android:fontFamily="@font/castoro"
+        android:text="To'lov"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+</LinearLayout>

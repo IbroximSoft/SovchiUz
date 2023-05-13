@@ -65,6 +65,7 @@ class PhotoActivity : AppCompatActivity() {
                     isFirstResource: Boolean
                 ): Boolean {
                     binding.progress.visibility = View.GONE
+                    binding.txtProgress.visibility = View.GONE
                     binding.image.visibility = View.VISIBLE
                     binding.linearTimer.visibility = View.VISIBLE
                     start()

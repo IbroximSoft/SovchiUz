@@ -10,7 +10,6 @@ class TaklifData {
 
     constructor() {}
 
-
     constructor(
         key: String?,
         from_id: String?,

@@ -8,6 +8,7 @@
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/btn_button_on.xml" value="0.126" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/btn_button_woman.xml" value="0.126" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/button_background.xml" value="0.127" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/card_background.xml" value="0.1495" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/circle_blank.xml" value="0.145" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/conner_date_backgorund.xml" value="0.1425" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/edit_background.xml" value="0.126" />
@@ -17,15 +18,19 @@
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/ic_baseline_done_all_24.xml" value="0.137" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.137" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.1425" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/ic_clear.xml" value="0.138" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/ic_frame.xml" value="0.137" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/ic_star.xml" value="0.135" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/image_button.xml" value="0.127" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/left_background.xml" value="0.145" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/offline_radius.xml" value="0.137" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/online_radius.xml" value="0.137" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/pay_background.xml" value="0.1495" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/pay_btn.xml" value="0.1495" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/quest_drawable.xml" value="0.126" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/radius_progress.xml" value="0.127" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/drawable/reght_background.xml" value="0.145" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_chat_info.xml" value="0.2" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_chats.xml" value="0.2" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_contacts.xml" value="0.2" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_favorite.xml" value="0.22" />
@@ -34,7 +39,9 @@
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_male_edit_ques.xml" value="0.2" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_male_ques.xml" value="0.2" />
-        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_photo.xml" value="0.2" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_pay_info.xml" value="0.2" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_payment.xml" value="0.22" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_photo.xml" value="0.22" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_private_chat.xml" value="0.22" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_profile.xml" value="0.22" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/activity_register.xml" value="0.2" />
@@ -46,7 +53,7 @@
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/chat_layout.xml" value="0.22" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/chats_layout.xml" value="0.22" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/dialog_birthday.xml" value="0.19895833333333332" />
-        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/filter_item.xml" value="0.2" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/filter_item.xml" value="0.22" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/fragment_block.xml" value="0.18" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/fragment_chat.xml" value="0.22" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/fragment_favorite.xml" value="0.2" />
@@ -54,17 +61,22 @@
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/fragment_filter_m.xml" value="0.2" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/fragment_filter_w.xml" value="0.2" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/fragment_home.xml" value="0.18" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/fragment_humo.xml" value="0.22" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/fragment_information.xml" value="0.2" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/fragment_male.xml" value="0.2" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/fragment_more.xml" value="0.22" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/fragment_profil.xml" value="0.2" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/fragment_success.xml" value="0.2" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/fragment_uzcard.xml" value="0.25" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/fragment_visa.xml" value="0.2" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/fragment_wait.xml" value="0.18" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/fragment_woman.xml" value="0.18" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/home_item.xml" value="0.2" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/language_item.xml" value="0.22" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/more_item.xml" value="0.2" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/pay_item.xml" value="0.22" />
+        <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/payment_rv.xml" value="0.19895833333333332" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/quest_dialog.xml" value="0.19074074074074074" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/screen_item1.xml" value="0.2" />
         <entry key="..\:/Android dasturlar/Sovchi dasturi/SovchiUz/app/src/main/res/layout/screen_item2.xml" value="0.2" />

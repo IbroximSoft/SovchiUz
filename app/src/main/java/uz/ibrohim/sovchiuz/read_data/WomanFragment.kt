@@ -21,6 +21,7 @@ import uz.ibrohim.sovchiuz.R
 import uz.ibrohim.sovchiuz.databinding.FragmentWomanBinding
 import uz.ibrohim.sovchiuz.chat_page.PrivateChatActivity
 import uz.ibrohim.sovchiuz.more_page.profile.ProfileActivity
+import uz.ibrohim.sovchiuz.payment.PayInfoActivity
 import java.util.HashMap
 
 class WomanFragment : Fragment() {
@@ -212,8 +213,9 @@ class WomanFragment : Fragment() {
                                 Intent(requireContext(), ProfileActivity::class.java)
                             startActivity(intent)
                         } else {
-                            Toast.makeText(requireContext(), "Pul soladi", Toast.LENGTH_SHORT)
-                                .show()
+                            val intent =
+                                Intent(requireContext(), PayInfoActivity::class.java)
+                            startActivity(intent)
                         }
                     }
                 }

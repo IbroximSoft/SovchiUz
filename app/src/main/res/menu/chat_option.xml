@@ -6,6 +6,9 @@
         android:title="Bloklash"
         android:icon="@drawable/ic_baseline_block_24"/>
 
-
+    <item
+        android:id="@+id/nikoh"
+        android:title="Baxtimizni topdik"
+        android:icon="@drawable/ic_baseline_block_24"/>
 
 </menu>

@@ -2,6 +2,7 @@ package uz.ibrohim.sovchiuz.filter_page
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -41,7 +42,7 @@ class FilterWFragment : Fragment() {
         binding.filMRv.layoutManager = gridLayoutManager
 
         booksList = arrayListOf()
-        booksList2= arrayListOf()
+        booksList2 = arrayListOf()
         dataGet()
         adapter = HomeAdapter(booksList)
 
@@ -91,13 +92,14 @@ class FilterWFragment : Fragment() {
             }
     }
 
-    private fun showFilterDialog(){
-        val builder= AlertDialog.Builder(requireContext()).create()
-        val view = layoutInflater.inflate(R.layout.filter_item,null)
-        val  cancelBtn = view.findViewById<Button>(R.id.cancel)
-        val  filterBtn = view.findViewById<Button>(R.id.filter)
-        val  yearTxt = view.findViewById<TextView>(R.id.year)
-        val  provinceTxt = view.findViewById<AutoCompleteTextView>(R.id.province)
+    private fun showFilterDialog() {
+        val builder = AlertDialog.Builder(requireContext()).create()
+        builder.window?.setGravity(Gravity.TOP)
+        val view = layoutInflater.inflate(R.layout.filter_item, null)
+        val cancelBtn = view.findViewById<Button>(R.id.cancel)
+        val filterBtn = view.findViewById<Button>(R.id.filter)
+        val yearTxt = view.findViewById<TextView>(R.id.year)
+        val provinceTxt = view.findViewById<AutoCompleteTextView>(R.id.province)
         builder.setView(view)
         cancelBtn.setOnClickListener {
             builder.dismiss()
@@ -105,12 +107,13 @@ class FilterWFragment : Fragment() {
         builder.setCanceledOnTouchOutside(false)
 
         filterBtn.setOnClickListener {
-            if (yearTxt.text.isDigitsOnly()  && provinceTxt.text.isNotEmpty()){
+            if (yearTxt.text.isNotEmpty() && provinceTxt.text.isNotEmpty()) {
                 db.collection("woman_anketa").get()
                     .addOnSuccessListener {
                         if (!it.isEmpty) {
                             for (data in it.documents) {
-                                val anketaItems: AnketaItems? = data.toObject(AnketaItems::class.java)
+                                val anketaItems: AnketaItems? =
+                                    data.toObject(AnketaItems::class.java)
                                 if (anketaItems != null) {
                                     if (anketaItems.province == provinceTxt.text.toString() && anketaItems.year == yearTxt.text.toString()) {
                                         booksList2.add(anketaItems)
@@ -118,25 +121,27 @@ class FilterWFragment : Fragment() {
                                 }
                             }
                             binding.filMRv.adapter = HomeAdapter(booksList2)
-                            binding.textNoData.visibility=View.INVISIBLE
+                            binding.linerFavorite.visibility = View.INVISIBLE
                             if (booksList2.isEmpty()) {
-                                binding.textNoData.visibility=View.VISIBLE
+                                binding.linerFavorite.visibility = View.VISIBLE
                             }
                         }
                     }
                 booksList2.clear()
                 builder.dismiss()
-            }else{
-                Toast.makeText(requireContext(), "Iltimos Barcha Maydonlarni To'ldiring", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireContext(), getString(R.string.you_must_pay_in_full),
+                    Toast.LENGTH_SHORT).show()
             }
         }
+
         yearTxt.setOnClickListener {
             val calendar: Calendar = Calendar.getInstance()
             val yearSelected = calendar.get(Calendar.YEAR)
             val monthSelected = calendar.get(Calendar.MONTH)
             val dialogFragment: MonthYearPickerDialogFragment = MonthYearPickerDialogFragment
                 .getInstance(monthSelected, yearSelected)
-            val supportFragmentManager=fragmentManager
+            val supportFragmentManager = fragmentManager
             if (supportFragmentManager != null) {
                 dialogFragment.show(supportFragmentManager, null)
             }

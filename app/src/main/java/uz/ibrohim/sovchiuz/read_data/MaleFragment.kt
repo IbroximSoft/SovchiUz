@@ -17,10 +17,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
 import es.dmoral.toasty.Toasty
+import uz.ibrohim.sovchiuz.App
 import uz.ibrohim.sovchiuz.R
 import uz.ibrohim.sovchiuz.chat_page.PrivateChatActivity
 import uz.ibrohim.sovchiuz.databinding.FragmentMaleBinding
 import uz.ibrohim.sovchiuz.more_page.profile.ProfileActivity
+import uz.ibrohim.sovchiuz.payment.PayInfoActivity
 import java.util.HashMap
 
 class MaleFragment : Fragment() {
@@ -30,9 +32,10 @@ class MaleFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var reference: DatabaseReference
     private lateinit var references: DatabaseReference
-    private var year:String? = null
-    private var province:String? = null
-    private var marriage:String? = null
+    private var year: String? = null
+    private var province: String? = null
+    private var marriage: String? = null
+    private var status: String = ""
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -46,17 +49,21 @@ class MaleFragment : Fragment() {
         reference = FirebaseDatabase.getInstance().reference.child("users").child(currentUserID)
         references = FirebaseDatabase.getInstance().reference
 
-        val sharedPreference: SharedPreferences =
-            activity?.applicationContext?.getSharedPreferences(
-                "user_status",
-                Context.MODE_PRIVATE
-            )!!
-        val status = sharedPreference.getString("status", null)
+        reference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                status = snapshot.child("status").value.toString()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
 
         val bundle = this.arguments
         val uid = bundle!!.getString("uid").toString()
 
-        if (uid == currentUserID){
+        if (uid == currentUserID) {
             binding.linerMale.visibility = View.GONE
         }
 
@@ -91,7 +98,7 @@ class MaleFragment : Fragment() {
         checkFavorite(currentUserID, uid)
 
         binding.chat.setOnClickListener {
-            checkNetwork(uid, status)
+            checkNetwork(uid)
         }
 
         return binding.root
@@ -99,11 +106,11 @@ class MaleFragment : Fragment() {
 
     private fun checkFavorite(currentUserID: String, uid: String) {
         references.child("all_favorite").child(currentUserID).child(uid)
-            .addValueEventListener(object : ValueEventListener{
+            .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.child("uid").value !=null){
+                    if (snapshot.child("uid").value != null) {
                         val id = snapshot.child("uid").value.toString()
-                        if (id == uid){
+                        if (id == uid) {
                             binding.favoriteImg.setBackgroundResource(R.drawable.favorite_on)
                             binding.favorite.setOnClickListener {
                                 references.child("all_favorite").child(currentUserID)
@@ -111,7 +118,7 @@ class MaleFragment : Fragment() {
                                 binding.favoriteImg.setBackgroundResource(R.drawable.more_favorite)
                             }
                         }
-                    }else{
+                    } else {
                         onClickFavorite(uid, currentUserID)
                     }
                 }
@@ -128,11 +135,12 @@ class MaleFragment : Fragment() {
             dataHas["year"] = year.toString()
             dataHas["province"] = province.toString()
             dataHas["marriage"] = marriage.toString()
-            dataHas["image"] = "https://firebasestorage.googleapis.com/v0/b/sovchiuz-be26b.appspot.com/o/male.png?alt=media&token=43e95474-011a-4210-8f12-1de27ee5183f"
+            dataHas["image"] =
+                "https://firebasestorage.googleapis.com/v0/b/sovchiuz-be26b.appspot.com/o/male.png?alt=media&token=43e95474-011a-4210-8f12-1de27ee5183f"
             dataHas["gender"] = "male"
             dataHas["uid"] = uid
             references.child("all_favorite").child(currentUserID).child(uid).setValue(dataHas)
-                .addOnCompleteListener{
+                .addOnCompleteListener {
                     binding.favoriteImg.setBackgroundResource(R.drawable.favorite_on)
                 }
                 .addOnFailureListener {
@@ -141,18 +149,18 @@ class MaleFragment : Fragment() {
         }
     }
 
-    private fun checkNetwork(uid: String, status: String?): Boolean {
+    private fun checkNetwork(uid: String): Boolean {
         val connectivityManager =
             activity?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo = connectivityManager.activeNetworkInfo
         if (networkInfo == null || !networkInfo.isConnected || !networkInfo.isAvailable) {
             Toast.makeText(requireContext(), "Intenet yo'q", Toast.LENGTH_SHORT).show()
         }
-        statusCheck(uid, status)
+        statusCheck(uid)
         return networkInfo != null && networkInfo.isConnected
     }
 
-    private fun statusCheck(uid: String, status: String?) {
+    private fun statusCheck(uid: String) {
         when (status) {
             "no" -> {
                 val xabars = getString(R.string.toldir_anketa)
@@ -171,7 +179,6 @@ class MaleFragment : Fragment() {
                 startActivity(intent)
             }
             "yes" -> {
-                //User oldin ushbu userga yozganmi yoki yo'q tekshirish
                 userNullCheck(uid)
             }
         }
@@ -211,8 +218,9 @@ class MaleFragment : Fragment() {
                                 Intent(requireContext(), ProfileActivity::class.java)
                             startActivity(intent)
                         } else {
-                            Toast.makeText(requireContext(), "Pul soladi", Toast.LENGTH_SHORT)
-                                .show()
+                            val intent =
+                                Intent(requireContext(), PayInfoActivity::class.java)
+                            startActivity(intent)
                         }
                     }
                 }
