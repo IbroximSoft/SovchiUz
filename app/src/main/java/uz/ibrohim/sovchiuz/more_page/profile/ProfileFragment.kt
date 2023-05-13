@@ -17,6 +17,8 @@ import uz.ibrohim.sovchiuz.App
 import uz.ibrohim.sovchiuz.HomeActivity
 import uz.ibrohim.sovchiuz.R
 import uz.ibrohim.sovchiuz.databinding.FragmentProfileBinding
+import uz.ibrohim.sovchiuz.more_page.offer.CameActivity
+import uz.ibrohim.sovchiuz.more_page.offer.SendActivity
 import uz.ibrohim.sovchiuz.more_page.profile.edit_quest.MaleEditQuesActivity
 import uz.ibrohim.sovchiuz.more_page.profile.edit_quest.WomanEditQuesActivity
 import uz.ibrohim.sovchiuz.screens.ScreenActivity
@@ -50,6 +52,16 @@ class ProfileFragment : Fragment() {
         val name = sharedPreference.getString("name", null)
         binding.name.text = name.toString()
 
+        binding.apply {
+            linearSend.setOnClickListener {
+                val intent = Intent(requireContext(), SendActivity::class.java)
+                startActivity(intent)
+            }
+            linearCame.setOnClickListener {
+                val intent = Intent(requireContext(), CameActivity::class.java)
+                startActivity(intent)
+            }
+        }
         val ref = db.collection("all_anketa")
         ref.document(currentUserID).get()
             .addOnSuccessListener {
