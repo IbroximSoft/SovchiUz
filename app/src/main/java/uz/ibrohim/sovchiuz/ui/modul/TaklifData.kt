@@ -7,6 +7,7 @@ class TaklifData {
     var last_name: String? = null
     var yosh = 0
     var manzil: String? = null
+    val staus: String? = "Kutilmoqda"
 
     constructor() {}
 

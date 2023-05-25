@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingStart="16dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp"
+    android:orientation="horizontal">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imagen"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/info_male"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="24dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/ism"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.Material3.BodyLarge"
+            android:text="Asadbek"
+            />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/yosh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="yosh: 18"
+            style="@style/TextAppearance.Material3.BodyMedium"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/manzil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Manzil: Toshkent"
+            style="@style/TextAppearance.Material3.BodyMedium"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="end">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/rad_etish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:backgroundTint="#FF5722"
+                style="@style/Widget.Material3.Button.IconButton"
+                app:icon="@drawable/ic_close_gray_24dp"
+                app:iconTint="#fff"
+                android:textSize="@dimen/padd_10"
+                android:textColor="#fff"
+                android:text="Rad qilish"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/qabul_qilish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:backgroundTint="#4CAF50"
+                style="@style/Widget.Material3.Button.IconButton"
+                app:icon="@drawable/ic_baseline_done_24"
+                app:iconTint="#fff"
+                android:textSize="@dimen/padd_10"
+                android:textColor="#fff"
+                android:text="Qabul qilish"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>
